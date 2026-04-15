@@ -1,0 +1,201 @@
+:root {
+  --bg-dark: #101010;
+  --text-dark: #121212;
+  --text-light: #f7f4ee;
+  --panel: #f2e8dc;
+  --line: rgba(18, 18, 18, 0.14);
+
+  /* Troque estas cores pelas que preferir */
+  --color-jornalismo: #d86a32;
+  --color-design: #be3f56;
+  --color-fotografia: #2f6b5f;
+  --color-video: #315edb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(2rem, 4vw, 4rem);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
+    url('assets/fundo-cordel.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.1) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  color: var(--text-light);
+}
+
+.hero__eyebrow {
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.88;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 10vw, 7.5rem);
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.hero h1 span {
+  color: #f4d35e;
+}
+
+.hero__description {
+  margin-top: 1.6rem;
+  max-width: 560px;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(247, 244, 238, 0.92);
+}
+
+.hero__button {
+  display: inline-flex;
+  margin-top: 2rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #f4d35e;
+  color: #121212;
+  font-weight: 700;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.portfolio {
+  background: var(--panel);
+  padding: 3rem clamp(1.25rem, 5vw, 4rem) 5rem;
+}
+
+.portfolio__intro {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+.portfolio__intro h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 0.65rem;
+}
+
+.portfolio__intro p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(18,18,18,0.78);
+}
+
+.areas {
+  border-top: 1px solid var(--line);
+}
+
+.area {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 110px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+  transition: padding-left 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.area:hover {
+  padding-left: 1rem;
+}
+
+.area__number {
+  font-size: 1.1rem;
+  opacity: 0.65;
+}
+
+.area__name {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.area__arrow {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 500;
+  padding-right: 0.5rem;
+}
+
+.area--jornalismo:hover {
+  background: var(--color-jornalismo);
+  color: var(--text-light);
+}
+
+.area--design:hover {
+  background: var(--color-design);
+  color: var(--text-light);
+}
+
+.area--fotografia:hover {
+  background: var(--color-fotografia);
+  color: var(--text-light);
+}
+
+.area--video:hover {
+  background: var(--color-video);
+  color: var(--text-light);
+}
+
+@media (max-width: 740px) {
+  .hero {
+    min-height: 82vh;
+    align-items: flex-end;
+    padding-bottom: 3rem;
+  }
+
+  .area {
+    grid-template-columns: 44px 1fr auto;
+    min-height: 88px;
+  }
+
+  .area__name {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+}
