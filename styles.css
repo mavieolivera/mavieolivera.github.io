@@ -41,7 +41,7 @@ img {
   padding: clamp(2rem, 4vw, 4rem);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
-    url('assets/fundo-cordel.jpg');
+    url('assets/fundo_cordel.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
