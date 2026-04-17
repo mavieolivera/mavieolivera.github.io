@@ -19,35 +19,105 @@
     <div class="hero__content">
       <p class="hero__eyebrow">Portfólio</p>
       
-     <!-- Importando a fonte Indie Flower -->
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+      <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Indie+Flower&display=swap" rel="stylesheet">
 
   <style>
-    h3 {
-      color: #D8E022;
-      font-family: 'Indie Flower', cursive;
-      font-size: 30px;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
+
+    .hero {
+      height: 100vh;
+      background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('SUA-IMAGEM-AQUI.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 60px;
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #FFFFFF;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #FF4D8D;
+      font-family: 'Indie Flower', cursive;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      color: #EAEAEA;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: #FFD166;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffca3a;
+    }
+
+    .tag {
+      color: #aaa;
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
   </style>
 </head>
 
 <body>
 
-  <h1>Olá, eu sou Maria Vitória</h1>
+  <section class="hero">
+    <div class="content">
 
-  <h3>
-    mas você pode me<br> 
-    chamar de Mavi ;)
-  </h3>
+      <div class="tag">PORTFÓLIO</div>
+
+      <h1>
+        Olá, eu sou<br>
+        Maria Vitória
+      </h1>
+
+      <h3>
+        mas você pode me chamar de Mavi ;)
+      </h3>
+
+      <p>
+        Espaço para reunir meus trabalhos em jornalismo, design,
+        fotografia e edição de vídeo.
+      </p>
+
+      <a href="#" class="btn">Ver áreas</a>
+
+    </div>
+  </section>
 
 </body>
 </html>
-      <p class="hero__description">
-        Espaço para reunir meus trabalhos em jornalismo, design, fotografia e edição de vídeo.
-      </p>
-      <a class="hero__button" href="#areas">Ver áreas</a>
-    </div>
-  </header>
 
   <main class="portfolio" id="areas">
     <section class="portfolio__intro">
