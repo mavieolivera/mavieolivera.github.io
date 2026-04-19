@@ -8,32 +8,640 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #f2e8dc; color: #121212; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
-    h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: .95; margin-bottom: .8rem; }
-    p { line-height: 1.7; color: rgba(18,18,18,.8); }
-    .card { background: white; border-radius: 22px; padding: 1.4rem; margin-top: 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
-    a { color: #d86a32; font-weight: 700; text-decoration: none; }
-    .back { display: inline-block; margin-bottom: 1.5rem; }
+    :root {
+      --bg: #f2e8dc;
+      --panel: rgba(255, 255, 255, 0.78);
+      --text: #121212;
+      --muted: rgba(18, 18, 18, 0.72);
+      --line: rgba(18, 18, 18, 0.1);
+      --accent: #d86a32;
+      --accent-soft: rgba(216, 106, 50, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(216, 106, 50, 0.12), transparent 28%),
+        linear-gradient(180deg, #f6ede2 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 5rem;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin-top: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .tag-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .tag-button {
+      border: 1px solid rgba(216, 106, 50, 0.2);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--text);
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tag-button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(216, 106, 50, 0.5);
+    }
+
+    .tag-button.is-active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--panel);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.07);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.1);
+    }
+
+    .work-card.is-hidden {
+      display: none;
+    }
+
+    .work-thumb {
+      position: relative;
+      min-height: 210px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: flex-end;
+      color: white;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .work-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--thumb-tint, rgba(0, 0, 0, 0.28));
+      z-index: 0;
+    }
+
+    .work-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7));
+      z-index: 1;
+    }
+
+    .work-thumb__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+    }
+
+    .thumb-video {
+      --thumb-tint: linear-gradient(135deg, rgba(31, 54, 92, 0.7), rgba(216, 106, 50, 0.75));
+    }
+
+    .thumb-reportagem {
+      --thumb-tint: linear-gradient(135deg, rgba(23, 90, 83, 0.72), rgba(52, 131, 112, 0.78));
+    }
+
+    .thumb-paper {
+      --thumb-tint: linear-gradient(135deg, rgba(95, 47, 114, 0.72), rgba(190, 63, 86, 0.82));
+    }
+
+    .thumb-blog {
+      --thumb-tint: linear-gradient(135deg, rgba(205, 142, 44, 0.75), rgba(216, 106, 50, 0.82));
+    }
+
+    .thumb-audio {
+      --thumb-tint: linear-gradient(135deg, rgba(31, 54, 92, 0.7), rgba(47, 107, 95, 0.8));
+    }
+
+    .thumb-series {
+      --thumb-tint: linear-gradient(135deg, rgba(190, 63, 86, 0.78), rgba(85, 32, 56, 0.9));
+    }
+
+    .work-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .work-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1.3rem;
+    }
+
+    .work-body h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .work-meta {
+      margin-top: 0.45rem;
+      font-size: 0.95rem;
+      color: rgba(18, 18, 18, 0.58);
+    }
+
+    .work-description {
+      margin-top: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.1rem;
+    }
+
+    .work-tag {
+      display: inline-flex;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .empty-state {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px dashed rgba(216, 106, 50, 0.28);
+      color: var(--muted);
+    }
+
+    .empty-state.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .works {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap {
+        padding: 2rem 1rem 4rem;
+      }
+
+      .works {
+        grid-template-columns: 1fr;
+      }
+
+      .work-thumb {
+        min-height: 190px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="index.html">← Voltar ao início</a>
-    <h1>Jornalismo</h1>
-    <p>Substitua os blocos abaixo pelos seus links, textos, PDFs, reportagens ou matérias publicadas.</p>
 
-    <div class="card">
-      <h2>Projeto 1</h2>
-      <p>Descreva aqui a reportagem, pauta, série especial ou TCC.</p>
-      <a href="https://seu-link-aqui.com" target="_blank" rel="noopener noreferrer">Abrir trabalho</a>
-    </div>
+    <section class="hero">
+      <h1>Jornalismo</h1>
+      <p class="intro">
+        Aqui estão algumas das suas publicações em blog, PDF e radiojornalismo. Você pode seguir
+        adicionando novos trabalhos depois, mantendo a mesma estrutura de cards e tags.
+      </p>
 
-    <div class="card">
-      <h2>Projeto 2</h2>
-      <p>Você também pode colocar imagem de capa, contexto e plataforma onde foi publicado.</p>
-      <a href="https://seu-link-aqui.com" target="_blank" rel="noopener noreferrer">Abrir trabalho</a>
+      <div class="tag-filter" aria-label="Filtrar trabalhos por tag">
+        <button class="tag-button" type="button" data-tag="blog">Blog</button>
+        <button class="tag-button" type="button" data-tag="radiojornalismo">Radiojornalismo</button>
+        <button class="tag-button" type="button" data-tag="texto">Texto</button>
+        <button class="tag-button" type="button" data-tag="audio">Áudio</button>
+        <button class="tag-button" type="button" data-tag="video">Vídeo</button>
+        <button class="tag-button" type="button" data-tag="paper">Paper</button>
+        <button class="tag-button" type="button" data-tag="cultura">Cultura</button>
+        <button class="tag-button" type="button" data-tag="ufpb">UFPB</button>
+        <button class="tag-button" type="button" data-tag="musica">Música</button>
+      </div>
+    </section>
+
+    <section class="works" aria-label="Lista de trabalhos">
+      <a class="work-card" data-tags="blog texto cultura cinema" href="https://paraibacriativa.com.br/brejo-paraibano-se-prepara-para-receber-a-1a-edicao-do-festival-bananeiras-de-cinema/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-blog">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre o Festival Bananeiras de Cinema" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Brejo paraibano se prepara para receber a 1a edicao do Festival Bananeiras de Cinema</h2>
+          <p class="work-meta">Paraíba Criativa | Blog | Cultura</p>
+          <p class="work-description">
+            Publicacao sobre a chegada do Festival Bananeiras de Cinema ao Brejo
+            paraibano, com foco em programacao cultural e movimentacao regional.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">Cultura</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto cultura musica" href="https://paraibacriativa.com.br/do-drum-and-bass-ate-o-rap-experimental-artista-diznaju-agitara-a-capital-paraibana-com-sensacao_-o-baile/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-series">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre Diznaju" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Do drum and bass ate o rap experimental, artista Diznaju agitara a capital paraibana com Sensacao_ O Baile</h2>
+          <p class="work-meta">Paraíba Criativa | Blog | Música</p>
+          <p class="work-description">
+            Texto de divulgacao cultural sobre show e cena musical, com destaque para
+            performance, estilo e circulacao artistica na capital paraibana.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">Música</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto cultura musica" href="https://paraibacriativa.com.br/cantor-paraibano-erick-retorna-aos-palcos-com-o-lancamento-da-sua-musica-nego-peto-de-vo/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-audio">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre Erick" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Cantor paraibano Erick retorna aos palcos com o lancamento da sua musica Nego Peto de Vo</h2>
+          <p class="work-meta">Paraíba Criativa | Blog | Música</p>
+          <p class="work-description">
+            Publicacao sobre retorno artistico e lancamento musical, com foco em cena
+            local, trajetoria e novidades da carreira do cantor.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">Música</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto cultura teatro" href="https://paraibacriativa.com.br/com-uma-mistura-de-elementos-do-teatro-do-absurdo-cidade-cao-estreia-nesta-sexta-feira-15-no-teatro-paulo-pontes/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-reportagem">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre a estreia de Cidade Cao" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Com uma mistura de elementos do teatro do absurdo, Cidade Cao estreia nesta sexta-feira no Teatro Paulo Pontes</h2>
+          <p class="work-meta">Paraíba Criativa | Blog | Teatro</p>
+          <p class="work-description">
+            Texto cultural sobre estreia teatral, atmosfera da obra e contexto de
+            apresentacao no circuito artistico paraibano.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">Cultura</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="paper texto ufpb" href="https://www.ccta.ufpb.br/editoraccta/contents/titulos/comunicacao/cidade-velha-novos-cronistas/livro-cronicas-alunos-completo-final-3.pdf" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-paper">
+          <img class="work-thumb__image" src="assets/livro-cronicas.png" alt="Thumbnail do PDF Cidade Velha, Novos Cronistas" />
+          <span class="work-type">PDF</span>
+        </div>
+        <div class="work-body">
+          <h2>Cidade Velha, Novos Cronistas</h2>
+          <p class="work-meta">UFPB | PDF | Publicacao academica</p>
+          <p class="work-description">
+            Livro em PDF vinculado a publicacao academica, ideal para representar
+            cronicas, coletaneas e producoes editoriais mais extensas.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Paper</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">UFPB</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto cultura" href="https://comunicaufpb.wordpress.com/2025/07/02/caminhos-do-frio-festival-movimenta-cultura-e-turismo-no-brejo-paraibano/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-blog">
+          <img class="work-thumb__image" src="https://paraibacriativa.com.br/wp-content/uploads/2023/11/BANANEIRAS.webp" alt="Thumbnail da publicacao sobre Caminhos do Frio" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Caminhos do Frio: festival movimenta cultura e turismo no Brejo paraibano</h2>
+          <p class="work-meta">Comunica UFPB | Blog | Julho 2025</p>
+          <p class="work-description">
+            Publicacao sobre festival regional e seu impacto cultural e turistico,
+            destacando programacao e circulacao no Brejo paraibano.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">Cultura</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto ufpb" href="https://comunicaufpb.wordpress.com/2025/07/09/jornada-galapagos-seleciona-estudante-da-ufpb-e-fortalece-vozes-nordestinas-no-jornalismo-nacional/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-reportagem">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre a Jornada Galapagos" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Jornada Galapagos seleciona estudante da UFPB e fortalece vozes nordestinas no jornalismo nacional</h2>
+          <p class="work-meta">Comunica UFPB | Blog | Julho 2025</p>
+          <p class="work-description">
+            Texto sobre destaque estudantil e formacao em jornalismo, conectando
+            universidade, representatividade e projeção nacional.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">UFPB</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto ufpb" href="https://comunicaufpb.wordpress.com/2025/07/16/eca-completa-35-anos-e-reforca-o-debate-da-educacao-como-direito-fundamental-na-paraiba/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-paper">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre os 35 anos do ECA" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>ECA completa 35 anos e reforca o debate da educacao como direito fundamental na Paraiba</h2>
+          <p class="work-meta">Comunica UFPB | Blog | Julho 2025</p>
+          <p class="work-description">
+            Publicacao voltada para memoria institucional, debate social e educacao,
+            articulando aniversario do ECA com contexto paraibano.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">UFPB</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="blog texto ufpb" href="https://comunicaufpb.wordpress.com/2025/07/23/estudantes-da-ufpb-destacam-importancia-das-amizades-durante-a-vida-universitaria/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-video">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da publicacao sobre amizades na vida universitaria" />
+          <span class="work-type">Post de Blog</span>
+        </div>
+        <div class="work-body">
+          <h2>Estudantes da UFPB destacam importancia das amizades durante a vida universitaria</h2>
+          <p class="work-meta">Comunica UFPB | Blog | Julho 2025</p>
+          <p class="work-description">
+            Texto sobre experiencia universitaria e convivio estudantil, com enfoque
+            humano e cotidiano dentro do ambiente academico.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Blog</span>
+            <span class="work-tag">Texto</span>
+            <span class="work-tag">UFPB</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo audio spotify" href="https://open.spotify.com/episode/0DklcMBfIu3ZpNX6eTU0wH" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-audio">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail do episodio de radiojornalismo no Spotify" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Episodio de Radiojornalismo 01</h2>
+          <p class="work-meta">Spotify | Áudio</p>
+          <p class="work-description">
+            Episodio em formato de radiojornalismo para portfolio, ideal para reunir
+            apresentacao, locucao, roteiro e conducao de pauta em audio.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Áudio</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo audio spotify" href="https://open.spotify.com/episode/2o6VNHzULUlIYVoiGXaJ7s" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-audio">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail do segundo episodio de radiojornalismo no Spotify" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Episodio de Radiojornalismo 02</h2>
+          <p class="work-meta">Spotify | Áudio</p>
+          <p class="work-description">
+            Segundo exemplo de producao em audio para destacar reportagem, apresentacao
+            e organizacao narrativa em formato radiofonico.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Áudio</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo audio texto educacao" href="https://cbnparaiba.com.br/papo-jovem-discute-educacao-no-transito/" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-reportagem">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da materia da CBN Paraiba sobre educacao no transito" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Papo Jovem discute educacao no transito</h2>
+          <p class="work-meta">CBN Paraíba | Áudio + matéria</p>
+          <p class="work-description">
+            Participacao em pauta voltada para educacao no transito, reunindo
+            radiojornalismo, debate publico e desdobramento em materia online.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Áudio</span>
+            <span class="work-tag">Texto</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo audio spotify" href="https://open.spotify.com/episode/1Hs5Ubdh8U6TGHhhjWoiai" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-audio">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail do terceiro episodio de radiojornalismo no Spotify" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Episodio de Radiojornalismo 03</h2>
+          <p class="work-meta">Spotify | Áudio</p>
+          <p class="work-description">
+            Exemplo de episodio para destacar locucao, edicao sonora, construcao de
+            roteiro e apuracao em formato de radiojornalismo.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Áudio</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo audio spotify" href="https://open.spotify.com/episode/1bNLZc4Ncmeo9yJBIEBRK6" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-audio">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail do quarto episodio de radiojornalismo no Spotify" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Episodio de Radiojornalismo 04</h2>
+          <p class="work-meta">Spotify | Áudio</p>
+          <p class="work-description">
+            Mais um exemplo de producao radiofonica para apresentar variedade de temas,
+            performance de voz e estrutura de programa.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Áudio</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work-card" data-tags="radiojornalismo video youtube" href="https://www.youtube.com/live/qJ_iG9iQtng?si=KAzy8I8GBpArdjKw" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb thumb-video">
+          <img class="work-thumb__image" src="assets/fundo_cordel.png" alt="Thumbnail da transmissao ao vivo de radiojornalismo no YouTube" />
+          <span class="work-type">Radiojornalismo</span>
+        </div>
+        <div class="work-body">
+          <h2>Transmissao ao vivo de Radiojornalismo</h2>
+          <p class="work-meta">YouTube | Vídeo ao vivo</p>
+          <p class="work-description">
+            Registro em video de producao jornalistica ao vivo, mostrando apresentacao,
+            dinamica de programa e formato audiovisual ligado ao radiojornalismo.
+          </p>
+          <div class="work-tags">
+            <span class="work-tag">Radiojornalismo</span>
+            <span class="work-tag">Vídeo</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <div class="empty-state" id="empty-state">
+      Nenhum exemplo combina com essa tag no momento.
     </div>
   </div>
+
+  <script>
+    const tagButtons = document.querySelectorAll('.tag-button');
+    const workCards = document.querySelectorAll('.work-card');
+    const emptyState = document.getElementById('empty-state');
+    let activeTag = null;
+
+    function updateFilter() {
+      let visibleCount = 0;
+
+      workCards.forEach((card) => {
+        const tags = card.dataset.tags.split(' ');
+        const shouldShow = !activeTag || tags.includes(activeTag);
+        card.classList.toggle('is-hidden', !shouldShow);
+
+        if (shouldShow) {
+          visibleCount += 1;
+        }
+      });
+
+      emptyState.classList.toggle('is-visible', visibleCount === 0);
+    }
+
+    tagButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const clickedTag = button.dataset.tag;
+        activeTag = activeTag === clickedTag ? null : clickedTag;
+
+        tagButtons.forEach((item) => {
+          item.classList.toggle('is-active', item.dataset.tag === activeTag);
+        });
+
+        updateFilter();
+      });
+    });
+  </script>
 </body>
 </html>
