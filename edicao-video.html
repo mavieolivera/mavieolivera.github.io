@@ -11,8 +11,8 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #0e0e0e;
-      color: #fff;
+      background: #f2e8dc;
+      color: #121212;
     }
 
     .wrap {
@@ -27,35 +27,32 @@
     }
 
     p {
-      color: rgba(255,255,255,.7);
+      color: rgba(18,18,18,.7);
     }
 
     .back {
       display: inline-block;
       margin-bottom: 2rem;
-      color: #aaa;
+      color: #315edb; 
+      font-weight: 600;
       text-decoration: none;
     }
 
-    /* GRID */
+    .back:hover {
+      text-decoration: underline;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    /* EMBED AJUSTE */
-    .instagram-media {
-      max-width: 100% !important;
-      width: 100% !important;
-      margin: 0 !important;
-      border-radius: 16px !important;
+      gap: 1.5rem;
     }
 
     .card {
-      background: #181818;
+      background: #ffffff;
+      border-radius: 20px;
       padding: 1rem;
-      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
     }
 
     .card h3 {
@@ -65,7 +62,14 @@
 
     .card span {
       font-size: 0.8rem;
-      color: #aaa;
+      color: #666;
+    }
+
+    .instagram-media {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      border-radius: 16px !important;
     }
 
   </style>
@@ -74,14 +78,13 @@
 <body>
   <div class="wrap">
 
-    <a class="back" href="index.html">← Voltar</a>
+    <a class="back" href="index.html">← Voltar ao início</a>
 
     <h1>Edição de Vídeo</h1>
     <p>Projetos audiovisuais com foco em narrativa, ritmo e estratégia digital.</p>
 
     <div class="grid">
 
-      <!-- Sintonia Feminina -->
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C5mU6lordUp/"></blockquote>
         <h3>Sintonia Feminina — Vídeo Institucional</h3>
@@ -94,7 +97,6 @@
         <span>Social media</span>
       </div>
 
-      <!-- Podcast -->
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DABZBptpJ3K/"></blockquote>
         <h3>Lançamento do Podcast</h3>
@@ -113,7 +115,6 @@
         <span>Alcance e retenção</span>
       </div>
 
-      <!-- Telejornalismo -->
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVYN40CDJwp/"></blockquote>
         <h3>Bom Dia Paraíba — Papo Jovem</h3>
@@ -130,7 +131,6 @@
 
   </div>
 
-  <!-- SCRIPT OBRIGATÓRIO -->
   <script async src="//www.instagram.com/embed.js"></script>
 
 </body>
