@@ -4,56 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | Mavi Oliveira </title>
-  <meta
-    name="description"
-    content="Portfólio com trabalhos de jornalismo, design, fotografia e edição de vídeo."
-  />
+  <meta name="description" content="Portfólio com trabalhos de jornalismo, design, fotografia e edição de vídeo." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">Portfólio</p>
-      
-     <!-- Importando a fonte Indie Flower -->
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 
   <style>
     h3 {
       color: #F2D88F;
-text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
       font-family: 'Indie Flower', cursive;
       font-size: 50px;
       line-height: 1;
     }
+    .hero__button {
+      background-color: #F2D88F;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+      color: #000;
+    }
+    .hero__button:hover {
+      background-color: #f4c10a;
+    }
+
+
+    #content-viewer {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      display: none; 
+      margin-top: 20px;
+    }
   </style>
 </head>
-
 <body>
 
-  <h1>Olá, eu sou Maria Vitória</h1>
-
-  <h3>
-    mas você pode me<br> 
-    chamar de Mavi ;)
-  </h3>
-  <div class="hero__actions">
-      <a class="hero__button" href="#areas">Meus trabalhos</a>
-      <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
-  </div>
-  <style> 
-      .hero__button {
-  background-color: #F2D88F;
-}
-
-.hero__button:hover {
-  background-color: #f4c10a;
-}
-</style>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Portfólio</p>
+      <h1>Olá, eu sou Maria Vitória</h1>
+      <h3>
+        mas você pode me<br> 
+        chamar de Mavi ;)
+      </h3>
+      <div class="hero__actions">
+          <a class="hero__button" href="#areas">Meus trabalhos</a>
+          <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
+      </div>
     </div>
   </header>
 
@@ -61,37 +62,50 @@ text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
     <section class="portfolio__intro">
       <h2>Ideias que viram projeto</h2>
       <p>
-
         Entre ideias, narrativas e imagens, esse é um espaço onde minhas criações ganham forma. 
-        Escolhe uma área e mergulha.
+        Escolha uma área e mergulhe.
       </p>
     </section>
 
     <nav class="areas" aria-label="Áreas do portfólio">
-      <a class="area area--jornalismo" href="jornalismo.html" target="_blank" rel="noopener noreferrer">
+      <a class="area area--jornalismo" href="jornalismo.html" onclick="showIframe()" target="view">
         <span class="area__number">01</span>
         <span class="area__name">Jornalismo</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--design" href="design.html" target="_blank" rel="noopener noreferrer">
+      <a class="area area--design" href="design.html" onclick="showIframe()" target="view">
         <span class="area__number">02</span>
         <span class="area__name">Design</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--fotografia" href="fotografia.html" target="_blank" rel="noopener noreferrer">
+      <a class="area area--fotografia" href="fotografia.html" onclick="showIframe()" target="view">
         <span class="area__number">03</span>
         <span class="area__name">Fotografia</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--video" href="edicao-video.html" target="_blank" rel="noopener noreferrer">
+      <a class="area area--video" href="edicao-video.html" onclick="showIframe()" target="view">
         <span class="area__number">04</span>
         <span class="area__name">Edição de Vídeo</span>
         <span class="area__arrow">→</span>
       </a>
     </nav>
+
+    <iframe name="view" id="content-viewer"></iframe>
   </main>
+
+  <script>
+    function showIframe() {
+
+      document.getElementById('content-viewer').style.display = 'block';
+
+      setTimeout(() => {
+        document.getElementById('content-viewer').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  </script>
+
 </body>
 </html>
