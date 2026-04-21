@@ -12,8 +12,7 @@
     :root {
       --bg-color: #f2e8dc;
       --text-color: #121212;
-      --accent-color: #be3f56;
-      --card-radius: 20px;
+      --card-radius: 24px;
     }
 
     body {
@@ -21,92 +20,42 @@
       font-family: 'Inter', sans-serif;
       background: var(--bg-color);
       color: var(--text-color);
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* --- CABEÇALHO --- */
-    header {
-      padding-top: 4rem;
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800;
-      margin: 0;
-      line-height: 1;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.7;
-      margin-top: 10px;
-    }
-
-    /* --- CARROSSEL INFINITO (PRINCIPAIS) --- */
-    .slider-section {
-      padding: 40px 0 80px;
-    }
+    .slider-section { padding: 60px 0; overflow: hidden; }
 
     .slider-track {
       display: flex;
       gap: 30px;
-      animation: dialRotate 25s linear infinite;
+      animation: dialRotate 30s linear infinite;
       width: max-content;
     }
 
     .featured-item {
       flex: 0 0 320px;
-      height: 400px;
+      height: 420px;
       border-radius: var(--card-radius);
       overflow: hidden;
-      position: relative;
-      background: #e0d6c8;
-      transform: rotate(1.5deg); /* O toque do telefone antigo */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      transform: rotate(2deg);
+      transition: all 0.4s ease;
+      cursor: pointer;
     }
 
     .featured-item:hover {
-      transform: rotate(0deg) translateY(-10px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-      z-index: 2;
+      transform: rotate(0deg) scale(1.05);
+      z-index: 5;
     }
 
-    .featured-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .featured-item img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* --- GRADE GERAL (MAIS TRABALHO) --- */
-    .more-work {
-      padding-bottom: 6rem;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      padding-top: 4rem;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin: 0;
-    }
+    .more-work { padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.05); }
 
     .grid-archive {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 25px;
     }
 
@@ -114,146 +63,134 @@
       background: #fff;
       border-radius: var(--card-radius);
       overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.3s ease;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .archive-card:hover {
-      transform: translateY(-5px);
+    .archive-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .archive-info { padding: 1.5rem; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(8px);
     }
 
-    .archive-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #eee;
-      display: block;
-      object-fit: cover;
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      border-radius: 30px;
+      padding: 40px;
+      overflow-y: auto;
+      position: relative;
     }
 
-    .archive-info {
-      padding: 1.2rem;
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      border: none;
+      background: none;
     }
 
-    .archive-info h3 {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    .archive-info span {
-      font-size: 0.85rem;
-      opacity: 0.6;
-    }
-
-    /* ANIMAÇÃO */
     @keyframes dialRotate {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-350px * 4)); }
+      100% { transform: translateX(-1400px); } 
     }
 
-    .slider-section:hover .slider-track {
-      animation-play-state: paused;
-    }
-
-    @media (max-width: 768px) {
-      .grid-archive {
-        grid-template-columns: 1fr;
-      }
-    }
+    .slider-section:hover .slider-track { animation-play-state: paused; }
   </style>
 </head>
-
 <body>
 
   <div class="container">
-    <header>
-      <h1>Portfólio</h1>
-      <p class="subtitle">Trabalhos em destaque e projetos selecionados.</p>
-    </header>
+    <h1 style="margin-top: 4rem;">Trabalho em Destaque</h1>
   </div>
 
   <section class="slider-section">
     <div class="slider-track">
-      <div class="featured-item">
-        <img src="https://picsum.photos/seed/nike/600/800" alt="Nike">
+      <div class="featured-item" onclick="goToProject('frugo')">
+        <img src="https://picsum.photos/seed/frugo/500/700" alt="Frugo">
       </div>
-      <div class="featured-item">
-        <img src="https://picsum.photos/seed/shake/600/800" alt="Shake Shack">
+      <div class="featured-item" onclick="goToProject('nike')">
+        <img src="https://picsum.photos/seed/nike/500/700" alt="Nike">
       </div>
-      <div class="featured-item">
-        <img src="https://picsum.photos/seed/art/600/800" alt="Ilustração">
-      </div>
-      <div class="featured-item">
-        <img src="https://picsum.photos/seed/brand/600/800" alt="Branding">
-      </div>
-      <div class="featured-item"><img src="https://picsum.photos/seed/nike/600/800"></div>
-      <div class="featured-item"><img src="https://picsum.photos/seed/shake/600/800"></div>
-      <div class="featured-item"><img src="https://picsum.photos/seed/art/600/800"></div>
-      <div class="featured-item"><img src="https://picsum.photos/seed/brand/600/800"></div>
+      <div class="featured-item" onclick="goToProject('frugo')"><img src="https://picsum.photos/seed/frugo/500/700"></div>
+      <div class="featured-item" onclick="goToProject('nike')"><img src="https://picsum.photos/seed/nike/500/700"></div>
     </div>
   </section>
 
-  <section class="more-work">
+  <section id="mais-trabalho" class="more-work">
     <div class="container">
+      <h2 style="text-align: center; margin-bottom: 3rem;">MAIS TRABALHO</h2>
       
-      <div class="section-title">
-        <h2>Mais Trabalho</h2>
-        <p>Dê uma olhada, fique um pouco.</p>
-      </div>
-
       <div class="grid-archive">
-        
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/1/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>Projeto de Moeda</h3>
-            <span>Ilustração</span>
-          </div>
-        </a>
+        <div class="archive-card" id="card-frugo" onclick="openModal('frugo-modal')">
+          <img src="https://picsum.photos/seed/frugo/500/500">
+          <div class="archive-info"><h3>FRUGO</h3></div>
+        </div>
 
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/2/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>Composição Abstrata</h3>
-            <span>Design Gráfico</span>
-          </div>
-        </a>
-
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/3/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>Surf Vibes</h3>
-            <span>Ilustração Digital</span>
-          </div>
-        </a>
-
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/4/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>Editorial Fashion</h3>
-            <span>Layout</span>
-          </div>
-        </a>
-
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/5/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>App Redesign</h3>
-            <span>UI/UX</span>
-          </div>
-        </a>
-
-        <a href="#" class="archive-card">
-          <img src="https://picsum.photos/seed/6/400/400" class="archive-img">
-          <div class="archive-info">
-            <h3>Tipografia Experimental</h3>
-            <span>Arte</span>
-          </div>
-        </a>
-
+        <div class="archive-card" id="card-nike" onclick="openModal('nike-modal')">
+          <img src="https://picsum.photos/seed/nike/500/500">
+          <div class="archive-info"><h3>NIKE INC.</h3></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <div id="frugo-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="close-btn" onclick="hideAllModals()">&times;</button>
+      <h2 style="text-align:center">FRUGO</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <img src="https://picsum.photos/seed/f1/500/500" style="width:100%; border-radius:15px;">
+        <img src="https://picsum.photos/seed/f2/500/500" style="width:100%; border-radius:15px;">
+      </div>
+    </div>
+  </div>
+
+  <div id="nike-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="close-btn" onclick="hideAllModals()">&times;</button>
+      <h2 style="text-align:center">NIKE INC.</h2>
+      <p style="text-align:center">Galeria do projeto Nike aqui...</p>
+    </div>
+  </div>
+
+  <script>
+    function goToProject(projectId) {
+      document.getElementById('mais-trabalho').scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        openModal(projectId + '-modal');
+      }, 600);
+    }
+
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideAllModals() {
+      const modals = document.querySelectorAll('.modal-overlay');
+      modals.forEach(m => m.style.display = 'none');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModal(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        hideAllModals();
+      }
+    }
+  </script>
 </body>
 </html> 
