@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio | Mavi Oliveira </title>
+  <title>Portfólio | Mavi Oliveira</title>
   <meta name="description" content="Portfólio com trabalhos de jornalismo, design, fotografia e edição de vídeo." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Estilos da sua h3 personalizada */
+    
     h3 {
       color: #F2D88F;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -21,15 +21,16 @@
       line-height: 1;
     }
 
-    /* Estilos dos botões */
+    /* Estilos dos botões originais */
     .hero__button {
       background-color: #F2D88F;
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       display: inline-block;
       color: #000;
+      border-radius: 4px;
       font-weight: 600;
-      border-radius: 4px; /* Ajuste conforme seu design */
+      transition: background-color 0.3s;
     }
 
     .hero__button:hover {
@@ -40,6 +41,26 @@
       background-color: #e0e0e0;
       margin-left: 10px;
     }
+
+    /* Estilos para a seção Fale Comigo */
+    .contact-link {
+      text-decoration: none; 
+      color: #333; 
+      font-family: 'Inter', sans-serif; 
+      font-weight: 600; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 10px 20px; 
+      border: 2px solid #F2D88F; 
+      border-radius: 8px; 
+      transition: 0.3s;
+    }
+
+    .contact-link:hover {
+      background-color: #F2D88F;
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -48,11 +69,14 @@
     <div class="overlay"></div>
     <div class="hero__content">
       <p class="hero__eyebrow">Portfólio</p>
+      
       <h1>Olá, eu sou Maria Vitória</h1>
+
       <h3>
         mas você pode me<br> 
         chamar de Mavi ;)
       </h3>
+
       <div class="hero__actions">
           <a class="hero__button" href="#areas">Meus trabalhos</a>
           <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
@@ -65,7 +89,7 @@
       <h2>Ideias que viram projeto</h2>
       <p>
         Entre ideias, narrativas e imagens, esse é um espaço onde minhas criações ganham forma. 
-        Escolha uma área e mergulhe.
+        Escolhe uma área e mergulha.
       </p>
     </section>
 
@@ -95,6 +119,39 @@
       </a>
     </nav>
   </main>
+
+  <section class="contact" id="contato" style="padding: 80px 20px; background-color: #f9f9f9; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 32px; margin-bottom: 10px;">Fale comigo</h2>
+      <p style="font-family: 'Inter', sans-serif; color: #666; margin-bottom: 40px;">
+        Gostou do meu trabalho? Vamos conversar sobre novos projetos ou apenas trocar uma ideia.
+      </p>
+
+      <div class="contact__links" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        
+        <a href="mailto:seuemail@exemplo.com" class="contact-link">
+          <span>📧</span> E-mail
+        </a>
+
+        <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-link">
+          <span>🔗</span> LinkedIn
+        </a>
+
+        <a href="https://instagram.com/seuusuario" target="_blank" class="contact-link">
+          <span>📸</span> Instagram
+        </a>
+
+        <a href="https://wa.me/5511999999999" target="_blank" class="contact-link">
+          <span>💬</span> WhatsApp
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 40px 20px; text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; color: #999;">
+    <p>© 2026 Mavi Oliveira. Todos os direitos reservados.</p>
+  </footer>
 
 </body>
 </html>
