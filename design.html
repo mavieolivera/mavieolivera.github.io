@@ -3,213 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design | Portfólio Circular</title>
+  <title>Design | Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #be3f56;
+      --card-radius: 20px;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f2e8dc;
-      color: #121212;
-      overflow-x: hidden; /* Evita scroll lateral indesejado */
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
 
-    .wrap {
-      max-width: 100%;
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 3rem 0 5rem; /* Removido padding lateral para o slider ocupar tudo */
+      padding: 0 1.5rem;
     }
 
-    .header-content {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      line-height: .95;
-      margin-bottom: .8rem;
-    }
-
-    p {
-      line-height: 1.7;
-      color: rgba(18,18,18,.8);
-      max-width: 500px;
+    /* --- CABEÇALHO --- */
+    header {
+      padding-top: 4rem;
       margin-bottom: 2rem;
     }
 
-    a.back {
-      color: #be3f56;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 1.5rem;
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin: 0;
+      line-height: 1;
     }
 
-    /* --- ESTILO DO CARROSSEL TIPO TELEFONE ANTIGO --- */
-    
-    .slider-container {
-      width: 100%;
-      overflow: hidden;
-      padding: 60px 0;
-      position: relative;
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      margin-top: 10px;
+    }
+
+    /* --- CARROSSEL INFINITO (PRINCIPAIS) --- */
+    .slider-section {
+      padding: 40px 0 80px;
     }
 
     .slider-track {
       display: flex;
-      width: calc(350px * 8); /* Ajuste conforme o número de itens */
-      animation: dialRotate 30s linear infinite;
       gap: 30px;
+      animation: dialRotate 25s linear infinite;
+      width: max-content;
     }
 
-    .project {
-      position: relative;
-      flex: 0 0 320px; /* Largura fixa do card */
-      height: 420px;
+    .featured-item {
+      flex: 0 0 320px;
+      height: 400px;
+      border-radius: var(--card-radius);
       overflow: hidden;
-      border-radius: 24px;
-      background: #ddd;
-      text-decoration: none;
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-      
-      /* O segredo do movimento de "disco": */
-      transform: rotate(2deg) translateY(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      background: #e0d6c8;
+      transform: rotate(1.5deg); /* O toque do telefone antigo */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
     }
 
-    .project img {
+    .featured-item:hover {
+      transform: rotate(0deg) translateY(-10px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    .featured-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform .6s ease;
     }
 
-    /* Efeito de destaque ao passar o mouse */
-    .project:hover {
-      transform: rotate(0deg) translateY(-15px) scale(1.02);
-      z-index: 10;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    /* --- GRADE GERAL (MAIS TRABALHO) --- */
+    .more-work {
+      padding-bottom: 6rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding-top: 4rem;
     }
 
-    .project:hover img {
-      transform: scale(1.1);
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
     }
 
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 30px 20px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      color: white;
-    }
-
-    .overlay h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .overlay span {
-      font-size: 0.85rem;
-      opacity: 0.9;
+    .section-title h2 {
+      font-size: 2rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      margin: 0;
     }
 
-    /* Animação de Giro Infinito */
+    .grid-archive {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .archive-card {
+      background: #fff;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease;
+    }
+
+    .archive-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .archive-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #eee;
+      display: block;
+      object-fit: cover;
+    }
+
+    .archive-info {
+      padding: 1.2rem;
+    }
+
+    .archive-info h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .archive-info span {
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+
+    /* ANIMAÇÃO */
     @keyframes dialRotate {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-350px * 4)); } /* Metade do total para loop perfeito */
+      100% { transform: translateX(calc(-350px * 4)); }
     }
 
-    /* Pausar ao passar o mouse */
-    .slider-container:hover .slider-track {
+    .slider-section:hover .slider-track {
       animation-play-state: paused;
     }
 
+    @media (max-width: 768px) {
+      .grid-archive {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="header-content">
-      <a class="back" href="index.html">← Voltar ao início</a>
-      <h1>Design</h1>
-      <p>Projetos visuais com foco em identidade e movimento circular.</p>
+
+  <div class="container">
+    <header>
+      <h1>Portfólio</h1>
+      <p class="subtitle">Trabalhos em destaque e projetos selecionados.</p>
+    </header>
+  </div>
+
+  <section class="slider-section">
+    <div class="slider-track">
+      <div class="featured-item">
+        <img src="https://picsum.photos/seed/nike/600/800" alt="Nike">
+      </div>
+      <div class="featured-item">
+        <img src="https://picsum.photos/seed/shake/600/800" alt="Shake Shack">
+      </div>
+      <div class="featured-item">
+        <img src="https://picsum.photos/seed/art/600/800" alt="Ilustração">
+      </div>
+      <div class="featured-item">
+        <img src="https://picsum.photos/seed/brand/600/800" alt="Branding">
+      </div>
+      <div class="featured-item"><img src="https://picsum.photos/seed/nike/600/800"></div>
+      <div class="featured-item"><img src="https://picsum.photos/seed/shake/600/800"></div>
+      <div class="featured-item"><img src="https://picsum.photos/seed/art/600/800"></div>
+      <div class="featured-item"><img src="https://picsum.photos/seed/brand/600/800"></div>
     </div>
+  </section>
 
-    <div class="slider-container">
-      <div class="slider-track">
+  <section class="more-work">
+    <div class="container">
+      
+      <div class="section-title">
+        <h2>Mais Trabalho</h2>
+        <p>Dê uma olhada, fique um pouco.</p>
+      </div>
+
+      <div class="grid-archive">
         
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&w=400&q=80" alt="Nike Concept">
-          <div class="overlay">
-            <span>Branding</span>
-            <h2>Nike Inc. Inspired</h2>
-          </div>
-        </a>
-
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Shake Shack">
-          <div class="overlay">
-            <span>Campanha</span>
-            <h2>Shake Shack Visuals</h2>
-          </div>
-        </a>
-
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Jaffa Art">
-          <div class="overlay">
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/1/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>Projeto de Moeda</h3>
             <span>Ilustração</span>
-            <h2>Jaffa Project</h2>
           </div>
         </a>
 
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80" alt="Frugo">
-          <div class="overlay">
-            <span>Editorial</span>
-            <h2>Frugo Magazine</h2>
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/2/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>Composição Abstrata</h3>
+            <span>Design Gráfico</span>
           </div>
         </a>
 
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&w=400&q=80" alt="Nike Concept">
-          <div class="overlay">
-            <span>Branding</span>
-            <h2>Nike Inc.</h2>
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/3/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>Surf Vibes</h3>
+            <span>Ilustração Digital</span>
           </div>
         </a>
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Shake Shack">
-          <div class="overlay">
-            <span>Campanha</span>
-            <h2>Shake Shack</h2>
+
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/4/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>Editorial Fashion</h3>
+            <span>Layout</span>
           </div>
         </a>
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Jaffa Art">
-          <div class="overlay">
-            <span>Ilustração</span>
-            <h2>Jaffa Project</h2>
+
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/5/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>App Redesign</h3>
+            <span>UI/UX</span>
           </div>
         </a>
-        <a href="#" class="project">
-          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80" alt="Frugo">
-          <div class="overlay">
-            <span>Editorial</span>
-            <h2>Frugo Magazine</h2>
+
+        <a href="#" class="archive-card">
+          <img src="https://picsum.photos/seed/6/400/400" class="archive-img">
+          <div class="archive-info">
+            <h3>Tipografia Experimental</h3>
+            <span>Arte</span>
           </div>
         </a>
 
       </div>
     </div>
-  </div>
+  </section>
+
 </body>
-</html>
+</html> 
