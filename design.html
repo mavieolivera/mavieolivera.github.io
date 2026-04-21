@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design | Portfólio</title>
+  <title>Design | Portfólio Circular</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,12 +14,19 @@
       font-family: 'Inter', sans-serif;
       background: #f2e8dc;
       color: #121212;
+      overflow-x: hidden; /* Evita scroll lateral indesejado */
     }
 
     .wrap {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 3rem 0 5rem; /* Removido padding lateral para o slider ocupar tudo */
+    }
+
+    .header-content {
       max-width: 980px;
       margin: 0 auto;
-      padding: 3rem 1.25rem 5rem;
+      padding: 0 1.25rem;
     }
 
     h1 {
@@ -35,29 +42,43 @@
       margin-bottom: 2rem;
     }
 
-    a {
+    a.back {
       color: #be3f56;
       font-weight: 700;
       text-decoration: none;
-    }
-
-    .back {
       display: inline-block;
       margin-bottom: 1.5rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 2rem;
+    /* --- ESTILO DO CARROSSEL TIPO TELEFONE ANTIGO --- */
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      width: calc(350px * 8); /* Ajuste conforme o número de itens */
+      animation: dialRotate 30s linear infinite;
+      gap: 30px;
     }
 
     .project {
       position: relative;
+      flex: 0 0 320px; /* Largura fixa do card */
+      height: 420px;
       overflow: hidden;
-      border-radius: 18px;
+      border-radius: 24px;
       background: #ddd;
+      text-decoration: none;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      
+      /* O segredo do movimento de "disco": */
+      transform: rotate(2deg) translateY(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .project img {
@@ -65,35 +86,51 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform .4s ease;
+      transition: transform .6s ease;
+    }
+
+    /* Efeito de destaque ao passar o mouse */
+    .project:hover {
+      transform: rotate(0deg) translateY(-15px) scale(1.02);
+      z-index: 10;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
 
     .project:hover img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .overlay {
       position: absolute;
-      bottom: 16px;
-      left: 16px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
       color: white;
     }
 
     .overlay h2 {
       margin: 0;
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     .overlay span {
-      font-size: 0.8rem;
-      opacity: 0.85;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    /* Animação de Giro Infinito */
+    @keyframes dialRotate {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-350px * 4)); } /* Metade do total para loop perfeito */
+    }
+
+    /* Pausar ao passar o mouse */
+    .slider-container:hover .slider-track {
+      animation-play-state: paused;
     }
 
   </style>
@@ -101,55 +138,78 @@
 
 <body>
   <div class="wrap">
-
-    <a class="back" href="index.html">← Voltar ao início</a>
-
-    <h1>Design</h1>
-
-    <p>
-      Projetos visuais com foco em identidade, estratégia e comunicação.
-    </p>
-
-    <div class="grid">
-
-      <!-- PROJETO 1 -->
-      <a href="#" class="project">
-        <img src="assets/design1.png" alt="Projeto de identidade visual">
-        <div class="overlay">
-          <h2>Identidade Visual</h2>
-          <span>Branding</span>
-        </div>
-      </a>
-
-      <!-- PROJETO 2 -->
-      <a href="#" class="project">
-        <img src="assets/design2.png" alt="Post para redes sociais">
-        <div class="overlay">
-          <h2>Social Media</h2>
-          <span>Conteúdo digital</span>
-        </div>
-      </a>
-
-      <!-- PROJETO 3 -->
-      <a href="#" class="project">
-        <img src="assets/design3.png" alt="Projeto editorial">
-        <div class="overlay">
-          <h2>Editorial</h2>
-          <span>Diagramação</span>
-        </div>
-      </a>
-
-      <!-- PROJETO 4 -->
-      <a href="#" class="project">
-        <img src="assets/design4.png" alt="Campanha visual">
-        <div class="overlay">
-          <h2>Campanha</h2>
-          <span>Direção criativa</span>
-        </div>
-      </a>
-
+    <div class="header-content">
+      <a class="back" href="index.html">← Voltar ao início</a>
+      <h1>Design</h1>
+      <p>Projetos visuais com foco em identidade e movimento circular.</p>
     </div>
 
+    <div class="slider-container">
+      <div class="slider-track">
+        
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&w=400&q=80" alt="Nike Concept">
+          <div class="overlay">
+            <span>Branding</span>
+            <h2>Nike Inc. Inspired</h2>
+          </div>
+        </a>
+
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Shake Shack">
+          <div class="overlay">
+            <span>Campanha</span>
+            <h2>Shake Shack Visuals</h2>
+          </div>
+        </a>
+
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Jaffa Art">
+          <div class="overlay">
+            <span>Ilustração</span>
+            <h2>Jaffa Project</h2>
+          </div>
+        </a>
+
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80" alt="Frugo">
+          <div class="overlay">
+            <span>Editorial</span>
+            <h2>Frugo Magazine</h2>
+          </div>
+        </a>
+
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&w=400&q=80" alt="Nike Concept">
+          <div class="overlay">
+            <span>Branding</span>
+            <h2>Nike Inc.</h2>
+          </div>
+        </a>
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Shake Shack">
+          <div class="overlay">
+            <span>Campanha</span>
+            <h2>Shake Shack</h2>
+          </div>
+        </a>
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Jaffa Art">
+          <div class="overlay">
+            <span>Ilustração</span>
+            <h2>Jaffa Project</h2>
+          </div>
+        </a>
+        <a href="#" class="project">
+          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80" alt="Frugo">
+          <div class="overlay">
+            <span>Editorial</span>
+            <h2>Frugo Magazine</h2>
+          </div>
+        </a>
+
+      </div>
+    </div>
   </div>
 </body>
 </html>
