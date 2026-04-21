@@ -12,6 +12,7 @@
     :root {
       --bg-color: #f2e8dc;
       --text-color: #121212;
+      --accent-color: #be3f56;
       --card-radius: 24px;
     }
 
@@ -25,12 +26,24 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .slider-section { padding: 60px 0; overflow: hidden; }
+    header { padding-top: 4rem; }
+    .back-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: 700; margin-bottom: 1.5rem; }
 
-    .slider-track {
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; margin: 0; line-height: 0.95; }
+
+    /* --- CARROSSEL COM NAVEGAÇÃO --- */
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      padding: 40px 0 80px;
+      overflow: hidden;
+    }
+
+    .slider-container {
       display: flex;
       gap: 30px;
-      animation: dialRotate 30s linear infinite;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      padding: 0 1.5rem; /* Margem inicial para o primeiro card */
       width: max-content;
     }
 
@@ -42,104 +55,94 @@
       transform: rotate(2deg);
       transition: all 0.4s ease;
       cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
-    .featured-item:hover {
-      transform: rotate(0deg) scale(1.05);
-      z-index: 5;
+    .featured-item:hover { transform: rotate(0deg) scale(1.03); z-index: 5; }
+    .featured-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+    /* --- SETAS DE NAVEGAÇÃO --- */
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: -40px;
+      margin-bottom: 40px;
     }
 
-    .featured-item img { width: 100%; height: 100%; object-fit: cover; }
-
-    .more-work { padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.05); }
-
-    .grid-archive {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .archive-card {
-      background: #fff;
-      border-radius: var(--card-radius);
-      overflow: hidden;
+    .nav-btn {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.1);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       cursor: pointer;
-      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
+    .nav-btn:hover { background: var(--accent-color); color: white; transform: scale(1.1); }
+
+    /* --- GRADE MAIS TRABALHO --- */
+    .more-work { padding: 80px 0; border-top: 1px solid rgba(0,0,0,0.05); }
+    .grid-archive { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+    .archive-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; cursor: pointer; transition: 0.3s; }
     .archive-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
     .archive-info { padding: 1.5rem; }
 
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      backdrop-filter: blur(8px);
-    }
+    /* --- MODAL --- */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(10px); padding: 20px; }
+    .modal-content { background: white; width: 100%; max-width: 1000px; max-height: 90vh; border-radius: 30px; padding: 40px; overflow-y: auto; position: relative; }
+    .close-btn { position: sticky; top: 0; float: right; font-size: 32px; cursor: pointer; border: none; background: #f0f0f0; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-    .modal-content {
-      background: white;
-      width: 90%;
-      max-width: 1000px;
-      max-height: 90vh;
-      border-radius: 30px;
-      padding: 40px;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 30px;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-
-    @keyframes dialRotate {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-1400px); } 
-    }
-
-    .slider-section:hover .slider-track { animation-play-state: paused; }
+    @media (max-width: 768px) { .grid-archive { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1 style="margin-top: 4rem;">Trabalho em Destaque</h1>
+    <header>
+      <a class="back-link" href="index.html">← Voltar ao início</a>
+      <h1>Design</h1>
+      <p style="opacity: 0.7; margin-top: 10px;">Toque nas setas para navegar pelos destaques.</p>
+    </header>
   </div>
 
-  <section class="slider-section">
-    <div class="slider-track">
+  <section class="slider-wrapper">
+    <div class="slider-container" id="slider">
       <div class="featured-item" onclick="goToProject('frugo')">
         <img src="https://picsum.photos/seed/frugo/500/700" alt="Frugo">
       </div>
       <div class="featured-item" onclick="goToProject('nike')">
         <img src="https://picsum.photos/seed/nike/500/700" alt="Nike">
       </div>
-      <div class="featured-item" onclick="goToProject('frugo')"><img src="https://picsum.photos/seed/frugo/500/700"></div>
-      <div class="featured-item" onclick="goToProject('nike')"><img src="https://picsum.photos/seed/nike/500/700"></div>
+      <div class="featured-item" onclick="goToProject('jaffa')">
+        <img src="https://picsum.photos/seed/art/500/700" alt="Jaffa">
+      </div>
+      <div class="featured-item" onclick="goToProject('shack')">
+        <img src="https://picsum.photos/seed/shake/500/700" alt="Shake Shack">
+      </div>
     </div>
   </section>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="moveSlider(-1)">←</button>
+    <button class="nav-btn" onclick="moveSlider(1)">→</button>
+  </div>
 
   <section id="mais-trabalho" class="more-work">
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 3rem;">MAIS TRABALHO</h2>
-      
       <div class="grid-archive">
-        <div class="archive-card" id="card-frugo" onclick="openModal('frugo-modal')">
+        <div class="archive-card" onclick="openModal('frugo-modal')">
           <img src="https://picsum.photos/seed/frugo/500/500">
           <div class="archive-info"><h3>FRUGO</h3></div>
         </div>
-
-        <div class="archive-card" id="card-nike" onclick="openModal('nike-modal')">
+        <div class="archive-card" onclick="openModal('nike-modal')">
           <img src="https://picsum.photos/seed/nike/500/500">
           <div class="archive-info"><h3>NIKE INC.</h3></div>
         </div>
@@ -150,47 +153,48 @@
   <div id="frugo-modal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-content">
       <button class="close-btn" onclick="hideAllModals()">&times;</button>
-      <h2 style="text-align:center">FRUGO</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-        <img src="https://picsum.photos/seed/f1/500/500" style="width:100%; border-radius:15px;">
-        <img src="https://picsum.photos/seed/f2/500/500" style="width:100%; border-radius:15px;">
+      <h2 style="text-align:center; font-size: 2.5rem;">FRUGO</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+        <img src="https://picsum.photos/seed/f1/600/600" style="width:100%; border-radius:15px;">
+        <img src="https://picsum.photos/seed/f2/600/600" style="width:100%; border-radius:15px;">
       </div>
     </div>
   </div>
 
-  <div id="nike-modal" class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal-content">
-      <button class="close-btn" onclick="hideAllModals()">&times;</button>
-      <h2 style="text-align:center">NIKE INC.</h2>
-      <p style="text-align:center">Galeria do projeto Nike aqui...</p>
-    </div>
-  </div>
-
   <script>
+    let currentScroll = 0;
+    const slider = document.getElementById('slider');
+    const cardWidth = 350; // Largura do card + gap
+
+    function moveSlider(direction) {
+      const maxScroll = -(slider.offsetWidth - window.innerWidth + 60);
+      currentScroll -= direction * cardWidth;
+
+      // Limites para não scrollar infinitamente no vazio
+      if (currentScroll > 0) currentScroll = 0;
+      if (currentScroll < maxScroll) currentScroll = maxScroll;
+
+      slider.style.transform = `translateX(${currentScroll}px)`;
+    }
+
     function goToProject(projectId) {
       document.getElementById('mais-trabalho').scrollIntoView({ behavior: 'smooth' });
-
-      setTimeout(() => {
-        openModal(projectId + '-modal');
-      }, 600);
+      setTimeout(() => { openModal(projectId + '-modal'); }, 700);
     }
 
     function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      const m = document.getElementById(modalId);
+      if(m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
     }
 
     function hideAllModals() {
-      const modals = document.querySelectorAll('.modal-overlay');
-      modals.forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
       document.body.style.overflow = 'auto';
     }
 
     function closeModal(event) {
-      if (event.target.classList.contains('modal-overlay')) {
-        hideAllModals();
-      }
+      if (event.target.classList.contains('modal-overlay')) hideAllModals();
     }
   </script>
 </body>
-</html> 
+</html>
