@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edição de Vídeo | Portfólio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
@@ -24,11 +23,11 @@
 
     h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: .5rem;
     }
 
     p {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,.7);
     }
 
     .back {
@@ -38,68 +37,37 @@
       text-decoration: none;
     }
 
+    /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* EMBED AJUSTE */
+    .instagram-media {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      border-radius: 16px !important;
     }
 
     .card {
       background: #181818;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform .3s ease;
-      text-decoration: none;
-      color: white;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .thumb {
-      position: relative;
-      height: 180px;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .play {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: black;
-      font-weight: bold;
-    }
-
-    .content {
       padding: 1rem;
+      border-radius: 16px;
     }
 
-    .content h3 {
-      margin: 0 0 0.4rem;
+    .card h3 {
+      margin: 1rem 0 0.3rem;
       font-size: 1rem;
     }
 
-    .content span {
+    .card span {
       font-size: 0.8rem;
       color: #aaa;
     }
+
   </style>
 </head>
 
@@ -109,71 +77,61 @@
     <a class="back" href="index.html">← Voltar</a>
 
     <h1>Edição de Vídeo</h1>
-    <p>Projetos audiovisuais com foco em narrativa, ritmo e estratégia para diferentes plataformas.</p>
+    <p>Projetos audiovisuais com foco em narrativa, ritmo e estratégia digital.</p>
 
     <div class="grid">
 
       <!-- Sintonia Feminina -->
-      <a href="https://www.instagram.com/p/C5mU6lordUp/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Sintonia Feminina — Vídeo Institucional</h3>
-          <span>Roteiro e edição para projeto autoral</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C5mU6lordUp/"></blockquote>
+        <h3>Sintonia Feminina — Vídeo Institucional</h3>
+        <span>Roteiro e edição</span>
+      </div>
 
-      <a href="https://www.instagram.com/p/C6ujEg2O9--/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Sintonia Feminina — Conteúdo Promocional</h3>
-          <span>Roteiro e edição para redes sociais</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C6ujEg2O9--/"></blockquote>
+        <h3>Sintonia Feminina — Conteúdo Promocional</h3>
+        <span>Social media</span>
+      </div>
 
-      <!-- Lançamento podcast -->
-      <a href="https://www.instagram.com/p/DABZBptpJ3K/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Sintonia Feminina — Lançamento do Podcast</h3>
-          <span>Campanha audiovisual para divulgação</span>
-        </div>
-      </a>
+      <!-- Podcast -->
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DABZBptpJ3K/"></blockquote>
+        <h3>Lançamento do Podcast</h3>
+        <span>Campanha audiovisual</span>
+      </div>
 
-      <a href="https://www.instagram.com/p/DAGikULpxhU/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Sintonia Feminina — Série de Anúncios</h3>
-          <span>Roteiro e edição para estratégia digital</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAGikULpxhU/"></blockquote>
+        <h3>Série de Anúncios</h3>
+        <span>Estratégia digital</span>
+      </div>
 
-      <a href="https://www.instagram.com/p/DAJ71aqJlIu/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Sintonia Feminina — Conteúdo de Engajamento</h3>
-          <span>Peça voltada para alcance e retenção</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAJ71aqJlIu/"></blockquote>
+        <h3>Conteúdo de Engajamento</h3>
+        <span>Alcance e retenção</span>
+      </div>
 
       <!-- Telejornalismo -->
-      <a href="https://www.instagram.com/reel/DVYN40CDJwp/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>Bom Dia Paraíba — Papo Jovem</h3>
-          <span>Chamada televisiva com linguagem jovem</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVYN40CDJwp/"></blockquote>
+        <h3>Bom Dia Paraíba — Papo Jovem</h3>
+        <span>Chamada televisiva</span>
+      </div>
 
-      <a href="https://www.instagram.com/reel/DTniM89gEG_/" target="_blank" class="card">
-        <div class="thumb"><div class="overlay"><div class="play">▶</div></div></div>
-        <div class="content">
-          <h3>JPB1 de Verão — Campanha de Seleção</h3>
-          <span>Edição com referência ao BBB e timing de trends</span>
-        </div>
-      </a>
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTniM89gEG_/"></blockquote>
+        <h3>JPB1 de Verão</h3>
+        <span>Trend + timing de BBB</span>
+      </div>
 
     </div>
 
   </div>
+
+  <!-- SCRIPT OBRIGATÓRIO -->
+  <script async src="//www.instagram.com/embed.js"></script>
+
 </body>
-</html>
+</html> 
