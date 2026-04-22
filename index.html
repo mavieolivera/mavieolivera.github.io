@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
- 
+    /* Estilo do apelido Mavi */
     h3 {
       color: #F2D88F;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -21,7 +21,7 @@
       margin-top: 10px;
     }
 
-    
+    /* BOTÕES ARREDONDADOS (HERO E CONTATO) */
     .hero__button, .contact-link {
       background-color: #F2D88F;
       text-decoration: none;
@@ -39,17 +39,24 @@
       gap: 10px;
     }
 
-    .hero__button:hover, .contact-link:hover {
+    /* Cor intensa no hover para os botões amarelos */
+    .hero__button:hover, 
+    .contact-link:hover {
       background-color: #f4c10a;
       transform: translateY(-2px);
     }
 
+    /* Botão Sobre Mim também com cor intensa no hover */
     .hero__button--secondary {
-      background-color: #f4c10a;
+      background-color: #e0e0e0;
       margin-left: 10px;
     }
 
-    
+    .hero__button--secondary:hover {
+      background-color: #f4c10a;
+    }
+
+    /* SEÇÃO DE PROJETOS (SEM ARREDONDAMENTO) */
     .portfolio {
       background-color: #F5EFE6; 
       padding: 80px 10%;
@@ -85,31 +92,32 @@
       padding: 30px 20px;
       border-top: 1px solid rgba(0,0,0,0.1);
       transition: all 0.4s ease;
+      border-radius: 0; /* Removido o arredondamento */
     }
 
     .area:last-child {
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
-   
+    /* --- CORES DE HOVER RESTAURADAS DO CÓDIGO ANTERIOR --- */
     
     .area--jornalismo:hover {
-      background-color: #e3f2fd; /* Azul claro */
+      background-color: #e3f2fd; /* Azul claro suave */
       color: #1565c0;
     }
 
     .area--design:hover {
-      background-color: #fce4ec; /* Rosa claro */
+      background-color: #fce4ec; /* Rosa claro suave */
       color: #c2185b;
     }
 
     .area--fotografia:hover {
-      background-color: #f1f8e9; /* Verde claro */
+      background-color: #f1f8e9; /* Verde claro suave */
       color: #388e3c;
     }
 
     .area--video:hover {
-      background-color: #fff3e0; /* Laranja claro */
+      background-color: #fff3e0; /* Laranja claro suave */
       color: #e65100;
     }
 
