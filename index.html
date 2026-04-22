@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | Mavi Oliveira</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Estilo do apelido Mavi */
+
+    /* Nome Mavi */
     h3 {
       color: #F2D88F;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -21,7 +23,7 @@
       margin-top: 10px;
     }
 
-    /* BOTÕES ARREDONDADOS (HERO E CONTATO) */
+    /* 🔥 BOTÕES (PADRÃO + HOVER CORRETO) */
     .hero__button, .contact-link {
       background-color: #F2D88F;
       text-decoration: none;
@@ -30,7 +32,7 @@
       align-items: center;
       justify-content: center;
       color: #000;
-      border-radius: 50px; 
+      border-radius: 50px;
       font-weight: 700;
       font-family: 'Inter', sans-serif;
       transition: all 0.3s ease;
@@ -39,40 +41,32 @@
       gap: 10px;
     }
 
-    /* Cor intensa no hover para os botões amarelos */
-    .hero__button:hover, 
+    /* 🔥 HOVER IGUAL DA IMAGEM */
+    .hero__button:hover,
     .contact-link:hover {
       background-color: #f4c10a;
       transform: translateY(-2px);
     }
 
-    /* Botão Sobre Mim também com cor intensa no hover */
     .hero__button--secondary {
-      background-color: #e0e0e0;
-      margin-left: 10px;
+      background-color: #F2D88F; /* mesma cor do principal */
     }
 
-    .hero__button--secondary:hover {
-      background-color: #f4c10a;
-    }
-
-    /* SEÇÃO DE PROJETOS (SEM ARREDONDAMENTO) */
+    /* PORTFÓLIO */
     .portfolio {
-      background-color: #F5EFE6; 
+      background-color: #F5EFE6;
       padding: 80px 10%;
       color: #000;
       text-align: left;
     }
 
     .portfolio__intro h2 {
-      font-family: 'Inter', sans-serif;
       font-weight: 800;
       font-size: 40px;
       margin-bottom: 10px;
     }
 
     .portfolio__intro p {
-      font-family: 'Inter', sans-serif;
       max-width: 600px;
       margin: 0 0 60px 0;
       line-height: 1.6;
@@ -81,9 +75,9 @@
 
     .areas {
       max-width: 1000px;
-      margin: 0;
     }
 
+    /* 🔥 BASE NEUTRA */
     .area {
       display: flex;
       align-items: center;
@@ -92,49 +86,45 @@
       padding: 30px 20px;
       border-top: 1px solid rgba(0,0,0,0.1);
       transition: all 0.4s ease;
-      border-radius: 0; /* Removido o arredondamento */
+      background-color: transparent;
     }
 
     .area:last-child {
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* --- CORES DE HOVER RESTAURADAS DO CÓDIGO ANTERIOR --- */
-    
+    /* 🎨 HOVER POR CATEGORIA */
     .area--jornalismo:hover {
-      background-color: #e3f2fd; /* Azul claro suave */
+      background-color: #e3f2fd;
       color: #1565c0;
     }
 
     .area--design:hover {
-      background-color: #fce4ec; /* Rosa claro suave */
+      background-color: #fce4ec;
       color: #c2185b;
     }
 
     .area--fotografia:hover {
-      background-color: #f1f8e9; /* Verde claro suave */
+      background-color: #f1f8e9;
       color: #388e3c;
     }
 
     .area--video:hover {
-      background-color: #fff3e0; /* Laranja claro suave */
+      background-color: #fff3e0;
       color: #e65100;
     }
 
     .area__number {
-      font-family: 'Inter', sans-serif;
       font-size: 16px;
       color: #666;
       margin-right: 40px;
-      transition: color 0.3s;
     }
 
     .area:hover .area__number {
-      color: inherit; 
+      color: inherit;
     }
 
     .area__name {
-      font-family: 'Inter', sans-serif;
       font-size: 48px;
       font-weight: 700;
       flex-grow: 1;
@@ -146,19 +136,16 @@
     }
 
     .area:hover .area__arrow {
-      transform: translateX(10px); 
+      transform: translateX(10px);
     }
 
-    /* SEÇÃO FALE COMIGO */
+    /* CONTATO */
     .contact {
       padding: 80px 10%;
-      text-align: left;
       background-color: #fff;
     }
 
     .contact h2 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 800;
       font-size: 32px;
       margin-bottom: 40px;
     }
@@ -168,20 +155,24 @@
       gap: 15px;
       flex-wrap: wrap;
     }
+
   </style>
 </head>
+
 <body>
 
   <header class="hero">
     <div class="overlay"></div>
+
     <div class="hero__content">
       <p class="hero__eyebrow">PORTFÓLIO</p>
+
       <h1>Olá, eu sou<br>Maria Vitória</h1>
       <h3>mas você pode me chamar de Mavi ;)</h3>
-      
+
       <div class="hero__actions" style="margin-top: 30px;">
-          <a class="hero__button" href="#areas">Meus trabalhos</a>
-          <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
+        <a class="hero__button" href="#areas">Meus trabalhos</a>
+        <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
       </div>
     </div>
   </header>
@@ -190,12 +181,13 @@
     <section class="portfolio__intro">
       <h2>Ideias que viram projeto</h2>
       <p>
-        Entre ideias, narrativas e imagens, esse é um espaço onde minhas criações ganham forma. 
+        Entre ideias, narrativas e imagens, esse é um espaço onde minhas criações ganham forma.
         Escolha uma área e mergulhe.
       </p>
     </section>
 
     <nav class="areas">
+
       <a class="area area--jornalismo" href="jornalismo.html">
         <span class="area__number">01</span>
         <span class="area__name">Jornalismo</span>
@@ -219,11 +211,13 @@
         <span class="area__name">Edição de Vídeo</span>
         <span class="area__arrow">→</span>
       </a>
+
     </nav>
   </main>
 
   <section class="contact">
     <h2>Fale comigo</h2>
+
     <div class="contact__links">
       <a href="mailto:mariavitoriaolivera@gmail.com" class="contact-link">📧 E-mail</a>
       <a href="https://www.linkedin.com/in/mariavitoriaolivera/" target="_blank" class="contact-link">🔗 LinkedIn</a>
@@ -231,7 +225,7 @@
     </div>
   </section>
 
-  <footer style="padding: 40px 10%; text-align: left; font-family: 'Inter'; font-size: 14px; color: #999;">
+  <footer style="padding: 40px 10%; font-size: 14px; color: #999;">
     <p>© 2026 Mavi Oliveira. Todos os direitos reservados.</p>
   </footer>
 
