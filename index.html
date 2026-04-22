@@ -18,34 +18,28 @@
       font-family: 'Indie Flower', cursive;
       font-size: 50px;
       line-height: 1;
+      margin-top: 10px;
     }
 
-    /* --- PADRONIZAÇÃO DOS BOTÕES --- */
-    .hero__button, .contact-link {
-      background-color: #F2D88F; /* Amarelo da imagem */
+    /* BOTÕES ARREDONDADOS (COMO NA IMAGEM) */
+    .hero__button {
+      background-color: #F2D88F;
       text-decoration: none;
       padding: 14px 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
       color: #000;
-      border-radius: 50px; /* Bem arredondado como na foto */
+      border-radius: 50px; 
       font-weight: 700;
       font-family: 'Inter', sans-serif;
       transition: all 0.3s ease;
       border: none;
-      cursor: pointer;
-      gap: 10px;
     }
 
-    /* Cor que muda quando passa o mouse (Hover) */
-    .hero__button:hover, .contact-link:hover {
-      background-color: #f4c10a; /* Amarelo mais escuro/vibrante */
-      transform: scale(1.05); /* Leve aumento */
-      box-shadow: 0 4px 15px rgba(242, 216, 143, 0.4);
+    .hero__button:hover {
+      background-color: #f4c10a;
+      transform: translateY(-2px);
     }
 
-   
     .hero__button--secondary {
       background-color: #e0e0e0;
       margin-left: 10px;
@@ -53,19 +47,92 @@
 
     .hero__button--secondary:hover {
       background-color: #d0d0d0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-
-    .contact-link {
-      border: none; 
-    }
-
-    .portfolio, .contact {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
+    /* RESTAURANDO O ESTILO ORIGINAL DA LISTA "IDEIAS QUE VIRAM PROJETO" */
+    .portfolio {
+      background-color: #F5EFE6; /* Cor de fundo bege clara original */
+      padding: 80px 20px;
+      color: #000;
       text-align: center;
+    }
+
+    .portfolio__intro h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .portfolio__intro p {
+      font-family: 'Inter', sans-serif;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .areas {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .area {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      padding: 30px 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .area:last-child {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .area:hover {
+      padding-left: 20px;
+      background-color: rgba(0,0,0,0.02);
+    }
+
+    .area__number {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      margin-right: 40px;
+    }
+
+    .area__name {
+      font-family: 'Inter', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      flex-grow: 1;
+    }
+
+    .area__arrow {
+      font-size: 32px;
+    }
+
+    /* ESTILO FALE COMIGO (BOTÕES ARREDONDADOS) */
+    .contact-link {
+      text-decoration: none; 
+      color: #333; 
+      font-family: 'Inter', sans-serif; 
+      font-weight: 600; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 12px 24px; 
+      border: 2px solid #F2D88F; 
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background-color: #F2D88F;
+      color: #000;
     }
   </style>
 </head>
@@ -74,16 +141,11 @@
   <header class="hero">
     <div class="overlay"></div>
     <div class="hero__content">
-      <p class="hero__eyebrow">Portfólio</p>
+      <p class="hero__eyebrow">PORTFÓLIO</p>
+      <h1>Olá, eu sou<br>Maria Vitória</h1>
+      <h3>mas você pode me chamar de Mavi ;)</h3>
       
-      <h1>Olá, eu sou Maria Vitória</h1>
-
-      <h3>
-        mas você pode me<br> 
-        chamar de Mavi ;)
-      </h3>
-
-      <div class="hero__actions">
+      <div class="hero__actions" style="margin-top: 30px;">
           <a class="hero__button" href="#areas">Meus trabalhos</a>
           <a class="hero__button hero__button--secondary" href="sobre-mim.html">Sobre mim</a>
       </div>
@@ -92,33 +154,33 @@
 
   <main class="portfolio" id="areas">
     <section class="portfolio__intro">
-      <h2 style="font-family: 'Inter'; font-weight: 800; font-size: 32px;">Ideias que viram projeto</h2>
-      <p style="font-family: 'Inter'; color: #444; margin-bottom: 40px;">
+      <h2>Ideias que viram projeto</h2>
+      <p>
         Entre ideias, narrativas e imagens, esse é um espaço onde minhas criações ganham forma. 
         Escolha uma área e mergulhe.
       </p>
     </section>
 
-    <nav class="areas" aria-label="Áreas do portfólio">
-      <a class="area area--jornalismo" href="jornalismo.html">
+    <nav class="areas">
+      <a class="area" href="jornalismo.html">
         <span class="area__number">01</span>
         <span class="area__name">Jornalismo</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--design" href="design.html">
+      <a class="area" href="design.html">
         <span class="area__number">02</span>
         <span class="area__name">Design</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--fotografia" href="fotografia.html">
+      <a class="area" href="fotografia.html">
         <span class="area__number">03</span>
         <span class="area__name">Fotografia</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area area--video" href="edicao-video.html">
+      <a class="area" href="edicao-video.html">
         <span class="area__number">04</span>
         <span class="area__name">Edição de Vídeo</span>
         <span class="area__arrow">→</span>
@@ -126,36 +188,14 @@
     </nav>
   </main>
 
-  <section class="contact" id="contato" style="background-color: #f9f9f9;">
-    <h2 style="font-family: 'Inter'; font-weight: 800; font-size: 32px; margin-bottom: 10px;">Fale comigo</h2>
-    <p style="font-family: 'Inter'; color: #666; margin-bottom: 40px;">
-      Vamos conversar sobre novos projetos ou apenas trocar uma ideia.
-    </p>
-
-    <div class="contact__links" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-      
-      <a href="mailto:seuemail@exemplo.com" class="contact-link">
-        <span>📧</span> E-mail
-      </a>
-
-      <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-link">
-        <span>🔗</span> LinkedIn
-      </a>
-
-      <a href="https://instagram.com/seuusuario" target="_blank" class="contact-link">
-        <span>📸</span> Instagram
-      </a>
-
-      <a href="https://wa.me/5511999999999" target="_blank" class="contact-link">
-        <span>💬</span> WhatsApp
-      </a>
-
+  <section class="contact" style="padding: 80px 20px; text-align: center; background-color: #fff;">
+    <h2 style="font-family: 'Inter'; font-weight: 800; font-size: 32px; margin-bottom: 40px;">Fale comigo</h2>
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+      <a href="mailto:demariav03@gmail.com" class="contact-link">📧 E-mail</a>
+      <a href="#" class="https://www.linkedin.com/in/mariavitoriaolivera/">🔗 LinkedIn</a>
+      <a href="#" class="https://www.instagram.com/mavieolivera/">📸 Instagram</a>
     </div>
   </section>
 
-  <footer style="padding: 40px 20px; text-align: center; font-family: 'Inter'; font-size: 14px; color: #999;">
-    <p>© 2026 Mavi Oliveira. Todos os direitos reservados.</p>
-  </footer>
-
 </body>
-</html> 
+</html>
