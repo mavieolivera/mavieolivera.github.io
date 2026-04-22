@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-   
+    /* Estilo do apelido Mavi */
     h3 {
       color: #F2D88F;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -21,7 +21,7 @@
       margin-top: 10px;
     }
 
-  
+    /* BOTÕES ARREDONDADOS */
     .hero__button, .contact-link {
       background-color: #F2D88F;
       text-decoration: none;
@@ -49,12 +49,12 @@
       margin-left: 10px;
     }
 
-  
+    /* SEÇÃO DE PROJETOS ALINHADA À ESQUERDA */
     .portfolio {
       background-color: #F5EFE6; 
-      padding: 80px 10%; 
+      padding: 80px 10%;
       color: #000;
-      text-align: left; 
+      text-align: left;
     }
 
     .portfolio__intro h2 {
@@ -67,14 +67,14 @@
     .portfolio__intro p {
       font-family: 'Inter', sans-serif;
       max-width: 600px;
-      margin: 0 0 60px 0; 
+      margin: 0 0 60px 0;
       line-height: 1.6;
       color: #333;
     }
 
     .areas {
       max-width: 1000px;
-      margin: 0; 
+      margin: 0;
     }
 
     .area {
@@ -82,18 +82,34 @@
       align-items: center;
       text-decoration: none;
       color: #000;
-      padding: 30px 0;
+      padding: 30px 20px; /* Adicionado padding lateral para o fundo colorido */
       border-top: 1px solid rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     .area:last-child {
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
-    .area:hover {
-      padding-left: 20px;
-      background-color: rgba(0,0,0,0.02);
+    /* CORES DE HOVER POR CATEGORIA */
+    .area--jornalismo:hover {
+      background-color: #e3f2fd; /* Azul claro */
+      color: #1565c0;
+    }
+
+    .area--design:hover {
+      background-color: #fce4ec; /* Rosa claro */
+      color: #c2185b;
+    }
+
+    .area--fotografia:hover {
+      background-color: #f1f8e9; /* Verde claro */
+      color: #388e3c;
+    }
+
+    .area--video:hover {
+      background-color: #fff3e0; /* Laranja claro */
+      color: #e65100;
     }
 
     .area__number {
@@ -101,6 +117,11 @@
       font-size: 16px;
       color: #666;
       margin-right: 40px;
+      transition: color 0.3s;
+    }
+
+    .area:hover .area__number {
+      color: inherit; /* Segue a cor do texto do hover */
     }
 
     .area__name {
@@ -112,6 +133,11 @@
 
     .area__arrow {
       font-size: 32px;
+      transition: transform 0.3s ease;
+    }
+
+    .area:hover .area__arrow {
+      transform: translateX(10px); /* Seta dá um pulinho para a direita */
     }
 
     /* SEÇÃO FALE COMIGO */
@@ -161,25 +187,25 @@
     </section>
 
     <nav class="areas">
-      <a class="area" href="jornalismo.html">
+      <a class="area area--jornalismo" href="jornalismo.html">
         <span class="area__number">01</span>
         <span class="area__name">Jornalismo</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area" href="design.html">
+      <a class="area area--design" href="design.html">
         <span class="area__number">02</span>
         <span class="area__name">Design</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area" href="fotografia.html">
+      <a class="area area--fotografia" href="fotografia.html">
         <span class="area__number">03</span>
         <span class="area__name">Fotografia</span>
         <span class="area__arrow">→</span>
       </a>
 
-      <a class="area" href="edicao-video.html">
+      <a class="area area--video" href="edicao-video.html">
         <span class="area__number">04</span>
         <span class="area__name">Edição de Vídeo</span>
         <span class="area__arrow">→</span>
