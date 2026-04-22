@@ -13,7 +13,6 @@
 
   <style>
 
-    /* Nome Mavi */
     h3 {
       color: #F2D88F;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -23,25 +22,17 @@
       margin-top: 10px;
     }
 
-    /* 🔥 BOTÕES (PADRÃO + HOVER CORRETO) */
+    /* BOTÕES */
     .hero__button, .contact-link {
       background-color: #F2D88F;
-      text-decoration: none;
       padding: 14px 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       color: #000;
       border-radius: 50px;
       font-weight: 700;
-      font-family: 'Inter', sans-serif;
       transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      gap: 10px;
+      text-decoration: none;
     }
 
-    /* 🔥 HOVER IGUAL DA IMAGEM */
     .hero__button:hover,
     .contact-link:hover {
       background-color: #f4c10a;
@@ -49,7 +40,7 @@
     }
 
     .hero__button--secondary {
-      background-color: #F2D88F; /* mesma cor do principal */
+      background-color: #F2D88F;
     }
 
     /* PORTFÓLIO */
@@ -57,27 +48,19 @@
       background-color: #F5EFE6;
       padding: 80px 10%;
       color: #000;
-      text-align: left;
     }
 
     .portfolio__intro h2 {
-      font-weight: 800;
       font-size: 40px;
-      margin-bottom: 10px;
+      font-weight: 800;
     }
 
     .portfolio__intro p {
       max-width: 600px;
-      margin: 0 0 60px 0;
-      line-height: 1.6;
+      margin-bottom: 60px;
       color: #333;
     }
 
-    .areas {
-      max-width: 1000px;
-    }
-
-    /* 🔥 BASE NEUTRA */
     .area {
       display: flex;
       align-items: center;
@@ -86,42 +69,40 @@
       padding: 30px 20px;
       border-top: 1px solid rgba(0,0,0,0.1);
       transition: all 0.4s ease;
-      background-color: transparent;
     }
 
     .area:last-child {
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* 🎨 HOVER POR CATEGORIA */
+    /* 🔥 HOVERS FORTES (IGUAL TARJA) */
     .area--jornalismo:hover {
-      background-color: #e3f2fd;
-      color: #1565c0;
+      background-color: #1565c0;
+      color: #fff;
     }
 
     .area--design:hover {
-      background-color: #fce4ec;
-      color: #c2185b;
+      background-color: #c2185b;
+      color: #fff;
     }
 
     .area--fotografia:hover {
-      background-color: #f1f8e9;
-      color: #388e3c;
+      background-color: #2e7d32;
+      color: #fff;
     }
 
     .area--video:hover {
-      background-color: #fff3e0;
-      color: #e65100;
+      background-color: #e65100;
+      color: #fff;
     }
 
     .area__number {
-      font-size: 16px;
-      color: #666;
       margin-right: 40px;
+      color: #666;
     }
 
     .area:hover .area__number {
-      color: inherit;
+      color: #fff;
     }
 
     .area__name {
@@ -137,17 +118,13 @@
 
     .area:hover .area__arrow {
       transform: translateX(10px);
+      color: #fff;
     }
 
     /* CONTATO */
     .contact {
       padding: 80px 10%;
-      background-color: #fff;
-    }
-
-    .contact h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
+      background: #fff;
     }
 
     .contact__links {
