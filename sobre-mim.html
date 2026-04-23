@@ -13,69 +13,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- 🔥 ADIÇÃO: ESTILO DAS HABILIDADES -->
   <style>
+    /* ===== ADICIONADO (SEM MEXER NO RESTO) ===== */
+
+    .about__card {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
     .skills {
-      margin-top: 40px;
+      min-width: 220px;
+      margin-top: 60px;
+    }
+
+    .skills h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
 
     .skill {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
-    .skill-name {
-      font-weight: 600;
-      margin-bottom: 8px;
+    .skill span {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
     }
 
-    .skill-bar {
-      width: 100%;
-      height: 12px;
-      background: #e5e5e5;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
+    .stars {
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #ddd;
+      transition: 0.3s;
     }
 
-    .skill-fill {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, #F2D88F, #f4c10a);
-      border-radius: 20px;
-      transition: width 1.2s ease;
-      position: relative;
+    /* ⭐ efeito ao passar o mouse */
+    .skill:hover .stars {
+      color: #f4c10a;
     }
 
-    .skill-fill::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.2),
-        rgba(255,255,255,0.2) 10px,
-        transparent 10px,
-        transparent 20px
-      );
-      animation: move 2s linear infinite;
-    }
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .about__card {
+        flex-direction: column;
+      }
 
-    @keyframes move {
-      from { transform: translateX(0); }
-      to { transform: translateX(40px); }
+      .skills {
+        margin-top: 40px;
+      }
     }
   </style>
-
 </head>
+
 <body>
   <main class="about">
     <a class="about__back" href="index.html">Voltar ao portfólio</a>
 
     <section class="about__card">
+
       <div class="about__content">
         <p class="about__eyebrow">Sobre mim</p>
-        <h1>Prazer</h1>
-        <h2> Mavi :)</h2>
+        <h1>oie, que bom te ter aqui!</h1>
+    
+
         <p>
           Sou estudante de Jornalismo na Universidade Federal da Paraíba e, há três anos, venho construindo minha experiência entre o marketing,
           o design gráfico, a redação e o audiovisual.
@@ -94,60 +97,39 @@
         <p>
           Gosto de pensar que meu trabalho está sempre nesse meio-termo entre o que é dito e o que é sentido, seja em um texto, uma arte ou um vídeo.
         </p>
-
-        <!-- 🔥 ADIÇÃO: HABILIDADES -->
-        <div class="skills">
-
-          <div class="skill">
-            <div class="skill-name">Design</div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-level="90%"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <div class="skill-name">Redação</div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-level="85%"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <div class="skill-name">Audiovisual</div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-level="80%"></div>
-            </div>
-          </div>
-
-          <div class="skill">
-            <div class="skill-name">Marketing</div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-level="75%"></div>
-            </div>
-          </div>
-
-        </div>
-        
       </div>
+
+      <!-- ⭐ NOVA PARTE (HABILIDADES) -->
+      <div class="skills">
+        <h3>Minhas habilidades</h3>
+
+        <div class="skill">
+          <span>Design</span>
+          <div class="stars">★★★★☆</div>
+        </div>
+
+        <div class="skill">
+          <span>Redação</span>
+          <div class="stars">★★★★★</div>
+        </div>
+
+        <div class="skill">
+          <span>Audiovisual</span>
+          <div class="stars">★★★★☆</div>
+        </div>
+
+        <div class="skill">
+          <span>Social Media</span>
+          <div class="stars">★★★★☆</div>
+        </div>
+
+        <div class="skill">
+          <span>Fotografia</span>
+          <div class="stars">★★★☆☆</div>
+        </div>
+      </div>
+
     </section>
   </main>
-
-  <!-- 🔥 ADIÇÃO: SCRIPT -->
-  <script>
-    const skills = document.querySelectorAll('.skill');
-
-    skills.forEach(skill => {
-      skill.addEventListener('mouseenter', () => {
-        const fill = skill.querySelector('.skill-fill');
-        fill.style.width = fill.dataset.level;
-      });
-
-      skill.addEventListener('mouseleave', () => {
-        const fill = skill.querySelector('.skill-fill');
-        fill.style.width = "0";
-      });
-    });
-  </script>
-
 </body>
 </html>
