@@ -51,7 +51,7 @@
       line-height: 0.95;
     }
 
-    /* CARROSSEL INFINITO E ARRASTÁVEL */
+    /* CARROSSEL */
     .slider-wrapper {
       width: 100%;
       padding: 60px 0;
@@ -105,7 +105,7 @@
       to { transform: translateX(calc(-1 * (var(--card-width) + var(--gap)) * 6)); }
     }
 
-    /* SEÇÃO MAIS TRABALHOS */
+    /* GRID MAIS TRABALHOS */
     .more-work {
       padding: 40px 0 80px 0;
     }
@@ -123,6 +123,7 @@
       overflow: hidden;
       cursor: pointer;
       transition: 0.3s;
+      height: 100%;
     }
 
     .archive-card:hover {
@@ -175,6 +176,18 @@
       font-size: 20px;
       z-index: 10;
     }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .modal-grid img {
+      width: 100%;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
@@ -199,7 +212,6 @@
     <div class="featured-item"><img src="assets/CASAAWA.png"></div>
     <div class="featured-item"><img src="assets/LACCA.png"></div>
     <div class="featured-item"><img src="assets/LACCA.png"></div>
-    
     <div class="featured-item"><img src="assets/SF.png"></div>
     <div class="featured-item"><img src="assets/KALOR.png"></div>
     <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
@@ -216,24 +228,42 @@
     <div class="grid-archive">
       <div class="archive-card" onclick="openModal('lacca-modal')">
         <img src="assets/LACCA.png">
-        <div class="archive-info">
-          <h3>LACCA</h3>
-        </div>
+        <div class="archive-info"><h3>LACCA</h3></div>
       </div>
 
       <div class="archive-card" onclick="openModal('innovare-modal')">
-        <img src="assets/innovare.png"> <div class="archive-info">
-          <h3>INNOVARE</h3>
-        </div>
+        <img src="assets/innovare.png">
+        <div class="archive-info"><h3>INNOVARE</h3></div>
       </div>
-    </div>
-  </div>
-</section>
 
-  <div class="archive-card" onclick="openModal('innovare-modal')">
-        <img src="assets/INOVA.png"> <div class="archive-info">
-          <h3>CLÍNICA INNOVA</h3>
-        </div>
+      <div class="archive-card" onclick="openModal('innova-modal')">
+        <img src="assets/INOVA.png">
+        <div class="archive-info"><h3>CLÍNICA INNOVA</h3></div>
+      </div>
+
+      <div class="archive-card" onclick="openModal('projeto4-modal')">
+        <img src="assets/capa4.png">
+        <div class="archive-info"><h3>PROJETO EXECUTIVO</h3></div>
+      </div>
+
+      <div class="archive-card" onclick="openModal('projeto5-modal')">
+        <img src="assets/capa5.png">
+        <div class="archive-info"><h3>IDENTIDADE VISUAL</h3></div>
+      </div>
+
+      <div class="archive-card" onclick="openModal('projeto6-modal')">
+        <img src="assets/capa6.png">
+        <div class="archive-info"><h3>SOCIAL MEDIA</h3></div>
+      </div>
+
+      <div class="archive-card" onclick="openModal('projeto7-modal')">
+        <img src="assets/capa7.png">
+        <div class="archive-info"><h3>BRANDING</h3></div>
+      </div>
+
+      <div class="archive-card" onclick="openModal('projeto8-modal')">
+        <img src="assets/capa8.png">
+        <div class="archive-info"><h3>EDITORIAL</h3></div>
       </div>
     </div>
   </div>
@@ -244,27 +274,18 @@
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>LACCA</h2>
     <p>Artes selecionadas feitas para o Laboratório Lacca</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
-      <img src="assets/lacca (1).png" style="width:100%;">
-      <img src="assets/lacca (2).png" style="width:100%;">
-      <img src="assets/lacca (3).png" style="width:100%;">
-      <img src="assets/lacca (4).png" style="width:100%;">
-      <img src="assets/lacca (5).png" style="width:100%;">
-      <img src="assets/lacca (6).png" style="width:100%;">
-      <img src="assets/lacca (7).png" style="width:100%;">
-      <img src="assets/lacca (8).png" style="width:100%;">
-      <img src="assets/lacca (9).png" style="width:100%;">
-      <img src="assets/lacca (10).png" style="width:100%;">
-      <img src="assets/lacca (11).png" style="width:100%;">
-      <img src="assets/lacca (12).png" style="width:100%;">
-      <img src="assets/lacca (13).png" style="width:100%;">
-      <img src="assets/lacca (14).png" style="width:100%;">
-      <img src="assets/lacca (15).png" style="width:100%;">
-      <img src="assets/lacca (16).png" style="width:100%;">
-      <img src="assets/lacca (17).png" style="width:100%;">
-      <img src="assets/lacca (18).png" style="width:100%;">
-      <img src="assets/lacca (19).png" style="width:100%;">
-      </div>
+    <div class="modal-grid">
+      <img src="assets/lacca (1).png"><img src="assets/lacca (2).png">
+      <img src="assets/lacca (3).png"><img src="assets/lacca (4).png">
+      <img src="assets/lacca (5).png"><img src="assets/lacca (6).png">
+      <img src="assets/lacca (7).png"><img src="assets/lacca (8).png">
+      <img src="assets/lacca (9).png"><img src="assets/lacca (10).png">
+      <img src="assets/lacca (11).png"><img src="assets/lacca (12).png">
+      <img src="assets/lacca (13).png"><img src="assets/lacca (14).png">
+      <img src="assets/lacca (15).png"><img src="assets/lacca (16).png">
+      <img src="assets/lacca (17).png"><img src="assets/lacca (18).png">
+      <img src="assets/lacca (19).png">
+    </div>
   </div>
 </div>
 
@@ -272,44 +293,77 @@
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>INNOVARE</h2>
-    <p>Descrição do projeto Innovare aqui.</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
-      <img src="assets/innovare (1).png" style="width:100%;">
-      <img src="assets/innovare (2).png" style="width:100%;">
-      <img src="assets/innovare (3).png" style="width:100%;">
-      <img src="assets/innovare (4).png" style="width:100%;">
-      <img src="assets/innovare (5).png" style="width:100%;">
-      <img src="assets/innovare (6).png" style="width:100%;">
-      <img src="assets/innovare (7).png" style="width:100%;">
-      <img src="assets/innovare (8).png" style="width:100%;">
-      <img src="assets/innovare (10).png" style="width:100%;">
-      <img src="assets/innovare (11).png" style="width:100%;">
-      <img src="assets/innovare (12).png" style="width:100%;">
-      </div>
+    <p>Descrição do projeto Innovare.</p>
+    <div class="modal-grid">
+      <img src="assets/innovare (1).png"><img src="assets/innovare (2).png">
+      <img src="assets/innovare (3).png"><img src="assets/innovare (4).png">
+      <img src="assets/innovare (5).png"><img src="assets/innovare (6).png">
+      <img src="assets/innovare (7).png"><img src="assets/innovare (8).png">
+      <img src="assets/innovare (10).png"><img src="assets/innovare (11).png">
+      <img src="assets/innovare (12).png">
+    </div>
   </div>
 </div>
 
-  <div id="innovare-modal" class="modal-overlay" onclick="closeModal(event)">
+<div id="innova-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>CLÍNICA INNOVA</h2>
-    <p>Descrição do projeto Innovare aqui.</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
-      <img src="assets/inova (1).png" style="width:100%;">
-      <img src="assets/inova (2).png" style="width:100%;">
-      <img src="assets/inova (3).png" style="width:100%;">
-      <img src="assets/inova (4).png" style="width:100%;">
-      <img src="assets/inova (5).png" style="width:100%;">
-      <img src="assets/inova (6).png" style="width:100%;">
-      <img src="assets/inova (7).png" style="width:100%;">
-      <img src="assets/inova (8).png" style="width:100%;">
-      <img src="assets/inova (9).png" style="width:100%;">
-      <img src="assets/inova (10).png" style="width:100%;">
-      <img src="assets/inova (11).png" style="width:100%;">
-      <img src="assets/inova (12).png" style="width:100%;">
-      <img src="assets/inova (13).png" style="width:100%;">
-      <img src="assets/inova (14).png" style="width:100%;">
-      </div>
+    <p>Identidade visual para Clínica Innova.</p>
+    <div class="modal-grid">
+      <img src="assets/inova (1).png"><img src="assets/inova (2).png">
+      <img src="assets/inova (3).png"><img src="assets/inova (4).png">
+      <img src="assets/inova (5).png"><img src="assets/inova (6).png">
+      <img src="assets/inova (7).png"><img src="assets/inova (8).png">
+      <img src="assets/inova (9).png"><img src="assets/inova (10).png">
+      <img src="assets/inova (11).png"><img src="assets/inova (12).png">
+      <img src="assets/inova (13).png"><img src="assets/inova (14).png">
+    </div>
+  </div>
+</div>
+
+<div id="projeto4-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>PROJETO EXECUTIVO</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid"><img src="assets/exemplo1.png"><img src="assets/exemplo2.png"></div>
+  </div>
+</div>
+
+<div id="projeto5-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>IDENTIDADE VISUAL</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid"><img src="assets/exemplo3.png"><img src="assets/exemplo4.png"></div>
+  </div>
+</div>
+
+<div id="projeto6-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>SOCIAL MEDIA</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid"><img src="assets/exemplo1.png"><img src="assets/exemplo2.png"></div>
+  </div>
+</div>
+
+<div id="projeto7-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>BRANDING</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid"><img src="assets/exemplo3.png"><img src="assets/exemplo4.png"></div>
+  </div>
+</div>
+
+<div id="projeto8-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>EDITORIAL</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid"><img src="assets/exemplo1.png"><img src="assets/exemplo2.png"></div>
   </div>
 </div>
 
@@ -328,7 +382,7 @@ function closeModal(e) {
   if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
-// Lógica de arraste
+// Lógica de arraste carrossel
 const wrapper = document.getElementById('sliderWrapper');
 const track = document.getElementById('sliderTrack');
 let isDown = false;
@@ -369,4 +423,4 @@ wrapper.addEventListener('mousemove', (e) => {
 </script>
 
 </body>
-</html> 
+</html>
