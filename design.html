@@ -51,22 +51,24 @@
       line-height: 0.95;
     }
 
-    /* CARROSSEL */
+    /* CARROSSEL AJUSTADO PARA MOUSE/TOUCH */
     .slider-wrapper {
       width: 100%;
-      padding: 60px 0;
-      overflow: hidden;
+      padding: 40px 0 20px 0; /* Reduzido padding inferior */
+      overflow-x: auto; /* Permite scroll horizontal */
+      display: flex;
+      scrollbar-width: none; /* Esconde barra no Firefox */
+    }
+
+    .slider-wrapper::-webkit-scrollbar {
+      display: none; /* Esconde barra no Chrome/Safari */
     }
 
     .slider-track {
       display: flex;
       gap: var(--gap);
+      padding: 0 40px; /* Respiro nas laterais do scroll */
       width: max-content;
-      animation: infiniteScroll 40s linear infinite;
-    }
-
-    .slider-wrapper:hover .slider-track {
-      animation-play-state: paused;
     }
 
     .featured-item {
@@ -89,39 +91,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none; /* Evita arrastar a imagem em vez do scroll */
     }
 
-    @keyframes infiniteScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-1 * (320px + 30px) * 2)); } /* Ajustado para 2 itens únicos */
-    }
-
-    /* BOTÕES */
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 60px;
-    }
-
-    .nav-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background: white;
-      transition: 0.3s;
-    }
-
-    .nav-btn:hover {
-      background: var(--accent-color);
-      color: white;
-    }
-
-    /* GRID */
+    /* GRID - SUBIDO MAIS TRABALHOS */
     .more-work {
-      padding: 80px 0;
+      padding: 20px 0 80px 0; /* Padding superior drasticamente reduzido */
     }
 
     .grid-archive {
@@ -152,7 +127,6 @@
       padding: 1.5rem;
     }
 
- 
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -227,14 +201,9 @@
   </div>
 </section>
 
-<div class="nav-buttons">
-  <button class="nav-btn" onclick="move(-1)">←</button>
-  <button class="nav-btn" onclick="move(1)">→</button>
-</div>
-
 <section class="more-work">
   <div class="container">
-    <h1 style="text-align:center;">Mais trabalhos</h1>
+    <h1 style="text-align:center; margin-top: 0;">Mais trabalhos</h1>
 
     <div class="grid-archive">
       <div class="archive-card" onclick="openModal('lacca-modal')">
@@ -293,10 +262,30 @@ function closeModal(e) {
   if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
-function move(direction){
+// Lógica de "arrastar" para scroll com o mouse
+const slider = document.querySelector('.slider-wrapper');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  document.querySelector('.slider-track').style.animation = 'none';
-}
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+});
+slider.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2; 
+  slider.scrollLeft = scrollLeft - walk;
+});
 </script>
 
 </body>
