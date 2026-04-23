@@ -6,147 +6,185 @@
   <title>Design | Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f2e8dc;
-      --text: #121212;
-      --accent: #be3f56;
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #be3f56;
+      --card-radius: 24px;
+      --card-width: 320px;
+      --gap: 30px;
     }
 
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: var(--bg-color);
+      color: var(--text-color);
       overflow-x: hidden;
     }
 
     .container {
       max-width: 1100px;
-      margin: auto;
+      margin: 0 auto;
       padding: 0 1.5rem;
     }
 
     header {
-      padding: 4rem 0 1rem;
+      padding-top: 4rem;
     }
 
-    .back {
-      color: var(--accent);
+    .back-link {
+      display: inline-block;
+      color: var(--accent-color);
       text-decoration: none;
       font-weight: 700;
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-size: 3rem;
-      margin: 10px 0;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin: 0;
+      line-height: 0.95;
     }
 
     /* CARROSSEL */
     .slider-wrapper {
-      overflow: hidden;
+      width: 100%;
       padding: 60px 0;
+      overflow: hidden;
     }
 
     .slider-track {
       display: flex;
-      gap: 30px;
+      gap: var(--gap);
       width: max-content;
-      animation: scroll 30s linear infinite;
+      animation: infiniteScroll 40s linear infinite;
     }
 
     .slider-wrapper:hover .slider-track {
       animation-play-state: paused;
     }
 
-    .card {
-      width: 300px;
+    .featured-item {
+      flex: 0 0 var(--card-width);
       height: 420px;
-      border-radius: 20px;
+      border-radius: var(--card-radius);
       overflow: hidden;
-      cursor: pointer;
       transform: rotate(2deg);
-      transition: 0.4s;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
-    .card:hover {
-      transform: rotate(0) scale(1.05);
+    .featured-item:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 5;
     }
 
-    .card img {
+    .featured-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    @keyframes scroll {
+    @keyframes infiniteScroll {
       from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      to { transform: translateX(calc(-1 * (320px + 30px) * 3)); }
+    }
+
+    /* BOTÕES */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 60px;
+    }
+
+    .nav-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    /* GRID */
+    .more-work {
+      padding: 80px 0;
+    }
+
+    .grid-archive {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .archive-card {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .archive-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .archive-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .archive-info {
+      padding: 1.5rem;
     }
 
     /* MODAL */
-    .modal {
+    .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 9999;
       padding: 20px;
     }
 
     .modal-content {
       background: white;
-      border-radius: 25px;
-      max-width: 1000px;
+      max-width: 900px;
       width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
+      border-radius: 30px;
       padding: 40px;
+      position: relative;
     }
 
-    .close {
+    .close-btn {
       position: absolute;
-      right: 30px;
       top: 20px;
-      font-size: 30px;
+      right: 20px;
+      border: none;
+      background: #eee;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       cursor: pointer;
+      font-size: 20px;
     }
-
-    .modal h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .modal p {
-      text-align: center;
-      opacity: 0.7;
-      margin-bottom: 30px;
-    }
-
-    /* GRID DAS IMAGENS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .grid img {
-      width: 100%;
-      border-radius: 15px;
-      object-fit: cover;
-    }
-
-    @media(max-width: 768px){
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
   </style>
 </head>
 
@@ -154,9 +192,9 @@
 
 <div class="container">
   <header>
-    <a href="index.html" class="back">← Voltar ao início</a>
+    <a class="back-link" href="index.html">← Voltar ao início</a>
     <h1>Design</h1>
-    <p>Projetos visuais desenvolvidos.</p>
+    <p style="opacity:.7;">Destaques em movimento contínuo.</p>
   </header>
 </div>
 
@@ -164,65 +202,80 @@
 <section class="slider-wrapper">
   <div class="slider-track">
 
-    <!-- LACCA -->
-    <div class="card" onclick="openModal()">
-      <img src="lacca.png">
+    <div class="featured-item" onclick="openModal('lacca-modal')">
+      <img src="assets/LACCA.png">
     </div>
 
-    <!-- DUPLICAÇÃO PARA LOOP -->
-    <div class="card" onclick="openModal()">
-      <img src="lacca.png">
+    <div class="featured-item" onclick="openModal('lacca-modal')">
+      <img src="assets/lacca-02.png">
+    </div>
+
+    <!-- repetição -->
+    <div class="featured-item" onclick="openModal('lacca-modal')">
+      <img src="assets/LACCA.png">
+    </div>
+
+    <div class="featured-item" onclick="openModal('lacca-modal')">
+      <img src="assets/lacca-02.png">
+    </div>
+
+  </div>
+</section>
+
+<div class="nav-buttons">
+  <button class="nav-btn" onclick="move(-1)">←</button>
+  <button class="nav-btn" onclick="move(1)">→</button>
+</div>
+
+<!-- GRID -->
+<section class="more-work">
+  <div class="container">
+    <h2 style="text-align:center;">Mais trabalhos</h2>
+
+    <div class="grid-archive">
+      <div class="archive-card" onclick="openModal('lacca-modal')">
+        <img src="assets/lacca-01.png">
+        <div class="archive-info">
+          <h3>LACCA</h3>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- MODAL -->
-<div class="modal" id="modal">
+<div id="lacca-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
+    <button class="close-btn" onclick="hideAllModals()">×</button>
 
     <h2>LACCA</h2>
-    <p>Trabalho desenvolvido para a Lacca em 2024</p>
+    <p>Identidade visual desenvolvida com foco em branding contemporâneo.</p>
 
-    <div class="grid">
-
-      <!-- 19 IMAGENS -->
-      <img src="lacca (1).png">
-      <img src="lacca (2).png">
-      <img src="lacca (3).png">
-      <img src="lacca (4).png">
-      <img src="lacca (5).png">
-      <img src="lacca (6).png">
-      <img src="lacca (7).png">
-      <img src="lacca (8).png">
-      <img src="lacca (9).png">
-      <img src="lacca (10).png">
-      <img src="lacca (11).png">
-      <img src="lacca (12).png">
-      <img src="lacca (13).png">
-      <img src="lacca (14).png">
-      <img src="lacca (15).png">
-      <img src="lacca (16).png">
-      <img src="lacca (17).png">
-      <img src="lacca (18).png">
-      <img src="lacca (19).png">
-
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <img src="assets/LACCA.png">
+      <img src="assets/lacca-02.png">
     </div>
 
   </div>
 </div>
 
 <script>
-  function openModal() {
-    document.getElementById("modal").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+}
 
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-    document.body.style.overflow = "auto";
-  }
+function hideAllModals() {
+  document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
+}
+
+function closeModal(e) {
+  if (e.target.classList.contains('modal-overlay')) hideAllModals();
+}
+
+function move(direction){
+  document.querySelector('.slider-track').style.animation = 'none';
+}
 </script>
 
 </body>
