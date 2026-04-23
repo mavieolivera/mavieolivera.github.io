@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Design | Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,6 @@
       font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 800;
       margin: 0;
-      line-height: 0.95;
     }
 
     /* CARROSSEL */
@@ -62,7 +61,7 @@
       display: flex;
       gap: var(--gap);
       width: max-content;
-      animation: infiniteScroll 40s linear infinite;
+      animation: scroll 35s linear infinite;
     }
 
     .slider-wrapper:hover .slider-track {
@@ -75,14 +74,12 @@
       border-radius: var(--card-radius);
       overflow: hidden;
       transform: rotate(2deg);
-      transition: all 0.4s ease;
+      transition: .4s;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
     .featured-item:hover {
       transform: rotate(0deg) scale(1.05);
-      z-index: 5;
     }
 
     .featured-item img {
@@ -91,32 +88,9 @@
       object-fit: cover;
     }
 
-    @keyframes infiniteScroll {
+    @keyframes scroll {
       from { transform: translateX(0); }
-      to { transform: translateX(calc(-1 * (320px + 30px) * 3)); }
-    }
-
-    /* BOTÕES */
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 60px;
-    }
-
-    .nav-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background: white;
-      transition: 0.3s;
-    }
-
-    .nav-btn:hover {
-      background: var(--accent-color);
-      color: white;
+      to { transform: translateX(-700px); }
     }
 
     /* GRID */
@@ -126,7 +100,7 @@
 
     .grid-archive {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
       gap: 25px;
     }
 
@@ -135,7 +109,7 @@
       border-radius: var(--card-radius);
       overflow: hidden;
       cursor: pointer;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     .archive-card:hover {
@@ -166,25 +140,26 @@
 
     .modal-content {
       background: white;
-      max-width: 900px;
       width: 100%;
+      max-width: 1000px;
       border-radius: 30px;
       padding: 40px;
-      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .close-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      right: 40px;
+      top: 30px;
       border: none;
       background: #eee;
       width: 40px;
       height: 40px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 20px;
     }
+
   </style>
 </head>
 
@@ -202,79 +177,93 @@
 <section class="slider-wrapper">
   <div class="slider-track">
 
-    <div class="featured-item" onclick="openModal('lacca-modal')">
-      <img src="assets/LACCA.png">
+    <div class="featured-item" onclick="openModal()">
+      <img src="assets/lacca (1).png">
     </div>
 
-    <div class="featured-item" onclick="openModal('lacca-modal')">
-      <img src="assets/lacca-02.png">
+    <div class="featured-item" onclick="openModal()">
+      <img src="assets/lacca (1).png">
     </div>
 
-    <!-- repetição -->
-    <div class="featured-item" onclick="openModal('lacca-modal')">
-      <img src="assets/LACCA.png">
-    </div>
-
-    <div class="featured-item" onclick="openModal('lacca-modal')">
-      <img src="assets/lacca-02.png">
+    <div class="featured-item" onclick="openModal()">
+      <img src="assets/lacca (1).png">
     </div>
 
   </div>
 </section>
 
-<div class="nav-buttons">
-  <button class="nav-btn" onclick="move(-1)">←</button>
-  <button class="nav-btn" onclick="move(1)">→</button>
-</div>
-
 <!-- GRID -->
 <section class="more-work">
   <div class="container">
+
     <h2 style="text-align:center;">Mais trabalhos</h2>
 
     <div class="grid-archive">
-      <div class="archive-card" onclick="openModal('lacca-modal')">
-        <img src="assets/lacca-01.png">
+
+      <div class="archive-card" onclick="openModal()">
+        <img src="assets/lacca (1).png">
         <div class="archive-info">
           <h3>LACCA</h3>
         </div>
       </div>
+
     </div>
 
   </div>
 </section>
 
 <!-- MODAL -->
-<div id="lacca-modal" class="modal-overlay" onclick="closeModal(event)">
+<div id="modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <button class="close-btn" onclick="hideModal()">×</button>
 
-    <h2>LACCA</h2>
-    <p>Identidade visual desenvolvida com foco em branding contemporâneo.</p>
+    <h2 style="text-align:center;">LACCA</h2>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-      <img src="assets/LACCA.png">
-      <img src="assets/lacca-02.png">
+    <p style="text-align:center; margin-bottom:30px;">
+      Trabalho desenvolvido para a Lacca em 2024
+    </p>
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    ">
+
+      <img src="assets/lacca (1).png">
+      <img src="assets/lacca (2).png">
+      <img src="assets/lacca (3).png">
+      <img src="assets/lacca (4).png">
+      <img src="assets/lacca (5).png">
+      <img src="assets/lacca (6).png">
+      <img src="assets/lacca (7).png">
+      <img src="assets/lacca (8).png">
+      <img src="assets/lacca (9).png">
+      <img src="assets/lacca (10).png">
+      <img src="assets/lacca (11).png">
+      <img src="assets/lacca (12).png">
+      <img src="assets/lacca (13).png">
+      <img src="assets/lacca (14).png">
+      <img src="assets/lacca (15).png">
+      <img src="assets/lacca (16).png">
+      <img src="assets/lacca (17).png">
+      <img src="assets/lacca (18).png">
+      <img src="assets/lacca (19).png">
+
     </div>
-
   </div>
 </div>
 
 <script>
-function openModal(id) {
-  document.getElementById(id).style.display = "flex";
+function openModal(){
+  document.getElementById("modal").style.display = "flex";
 }
 
-function hideAllModals() {
-  document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
+function hideModal(){
+  document.getElementById("modal").style.display = "none";
 }
 
-function closeModal(e) {
-  if (e.target.classList.contains('modal-overlay')) hideAllModals();
-}
-
-function move(direction){
-  document.querySelector('.slider-track').style.animation = 'none';
+function closeModal(e){
+  if(e.target.id === "modal") hideModal();
 }
 </script>
 
