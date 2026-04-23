@@ -22,7 +22,6 @@
       margin-top: 10px;
     }
 
- 
     .hero__button, .contact-link {
       background-color: #F2D88F;
       padding: 14px 32px;
@@ -31,6 +30,7 @@
       font-weight: 700;
       transition: all 0.3s ease;
       text-decoration: none;
+      display: inline-block;
     }
 
     .hero__button:hover,
@@ -43,7 +43,6 @@
       background-color: #F2D88F;
     }
 
-    
     .portfolio {
       background-color: #F5EFE6;
       padding: 80px 10%;
@@ -75,7 +74,6 @@
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
-  
     .area--jornalismo:hover {
       background-color:#e65100;
       color: #fff;
@@ -121,7 +119,6 @@
       color: #fff;
     }
 
-    /* CONTATO */
     .contact {
       padding: 80px 10%;
       background: #fff;
@@ -131,6 +128,95 @@
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
+    }
+
+    /* ========================= */
+    /* 🔥 RESPONSIVIDADE */
+    /* ========================= */
+
+    @media (max-width: 900px) {
+
+      .portfolio {
+        padding: 60px 6%;
+      }
+
+      .contact {
+        padding: 60px 6%;
+      }
+
+      .portfolio__intro h2 {
+        font-size: 32px;
+      }
+
+      .area__name {
+        font-size: 36px;
+      }
+
+      h3 {
+        font-size: 36px;
+      }
+
+      .hero__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .hero__button {
+        width: fit-content;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .portfolio {
+        padding: 50px 5%;
+      }
+
+      .contact {
+        padding: 50px 5%;
+      }
+
+      .portfolio__intro h2 {
+        font-size: 28px;
+      }
+
+      .portfolio__intro p {
+        font-size: 14px;
+      }
+
+      .area {
+        padding: 20px 10px;
+      }
+
+      .area__number {
+        margin-right: 20px;
+        font-size: 14px;
+      }
+
+      .area__name {
+        font-size: 26px;
+      }
+
+      .area__arrow {
+        font-size: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h3 {
+        font-size: 28px;
+      }
+
+      .contact__links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
     }
 
   </style>
