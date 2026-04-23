@@ -269,17 +269,279 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
+slider.addEventListener('mousedown', (e) => {<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design | Portfólio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #be3f56;
+      --card-radius: 24px;
+      --card-width: 320px;
+      --gap: 30px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      padding-top: 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin: 0;
+      line-height: 0.95;
+    }
+
+    /* CARROSSEL INFINITO */
+    .slider-wrapper {
+      width: 100%;
+      padding: 60px 0;
+      overflow: hidden;
+      cursor: grab;
+    }
+
+    .slider-wrapper:active {
+      cursor: grabbing;
+    }
+
+    .slider-track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content;
+      animation: infiniteScroll 30s linear infinite;
+    }
+
+    .slider-wrapper:hover .slider-track {
+      animation-play-state: paused;
+    }
+
+    .featured-item {
+      flex: 0 0 var(--card-width);
+      height: 420px;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transform: rotate(2deg);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .featured-item:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    @keyframes infiniteScroll {
+      from { transform: translateX(0); }
+      /* Move exatamente a largura total de 6 cards + gaps para o loop perfeito */
+      to { transform: translateX(calc(-1 * (var(--card-width) + var(--gap)) * 6)); }
+    }
+
+    /* GRID "MAIS TRABALHOS" */
+    .more-work {
+      padding: 60px 0 80px 0; /* Ajustado para não ficar colado */
+    }
+
+    .grid-archive {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px; /* Espaço entre o título e o card */
+    }
+
+    .archive-card {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .archive-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .archive-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .archive-info {
+      padding: 1.5rem;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 700px; 
+      width: 100%;
+      border-radius: 30px;
+      padding: 30px; 
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: #eee;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <header>
+    <a class="back-link" href="index.html">← Voltar ao início</a>
+    <h1>Design</h1>
+    <p style="opacity:.7; max-width: 800px;">Aqui o foco é fazer as coisas funcionarem. Não é só sobre deixar o layout bonito, mas sobre organizar a informação para que ela faça sentido.
+      Gosto de resolver os problemas com o que é necessário, sem encher de firula só para ocupar espaço.
+      Desce para ver os projetos.
+    </p>
+  </header>
+</div>
+
+<section class="slider-wrapper">
+  <div class="slider-track">
+    <div class="featured-item"><img src="assets/SF.png"></div>
+    <div class="featured-item"><img src="assets/KALOR.png"></div>
+    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
+    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+    
+    <div class="featured-item"><img src="assets/SF.png"></div>
+    <div class="featured-item"><img src="assets/KALOR.png"></div>
+    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
+    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+  </div>
+</section>
+
+<section class="more-work">
+  <div class="container">
+    <h1 style="text-align:center;">Mais trabalhos</h1>
+
+    <div class="grid-archive">
+      <div class="archive-card" onclick="openModal('lacca-modal')">
+        <img src="assets/LACCA.png">
+        <div class="archive-info">
+          <h3>LACCA</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="lacca-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>LACCA</h2>
+    <p>Artes selecionadas feitas para o Laboratório Lacca</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
+      <img src="assets/lacca (1).png" style="width:100%;">
+      <img src="assets/lacca (2).png" style="width:100%;">
+      </div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+  document.body.style.overflow = "hidden"; 
+}
+
+function hideAllModals() {
+  document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
+  document.body.style.overflow = "auto";
+}
+
+function closeModal(e) {
+  if (e.target.classList.contains('modal-overlay')) hideAllModals();
+}
+
+// Lógica de arrastar para scroll (mantendo a animação quando soltar)
+const slider = document.querySelector('.slider-wrapper');
+const track = document.querySelector('.slider-track');
+let isDown = false;
+let startX;
+let scrollLeft;
+
 slider.addEventListener('mousedown', (e) => {
   isDown = true;
+  track.style.animationPlayState = 'paused';
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
 });
+
 slider.addEventListener('mouseleave', () => {
   isDown = false;
+  track.style.animationPlayState = 'running';
 });
+
 slider.addEventListener('mouseup', () => {
   isDown = false;
+  track.style.animationPlayState = 'running';
 });
+
 slider.addEventListener('mousemove', (e) => {
   if(!isDown) return;
   e.preventDefault();
