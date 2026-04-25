@@ -90,6 +90,102 @@
       margin-top: 25px;
     }
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copywriting | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #2f6b5f; /* Cor original do seu link de voltar */
+      --card-radius: 24px;
+    }
+
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+    
+    .back-link { 
+      display: inline-block; 
+      color: var(--accent-color); 
+      text-decoration: none; 
+      font-weight: 700; 
+      margin-bottom: 1.5rem; 
+    }
+    
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; margin: 0; line-height: 0.95; }
+    .desc { opacity: .7; max-width: 800px; margin-top: 1rem; line-height: 1.7; }
+
+    /* GRID DE CARDS */
+    .grid-copy {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-bottom: 1px solid #eee; }
+    .card-info { padding: 1.5rem; }
+    .card-info h2 { margin: 0; font-size: 1.4rem; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px; 
+      width: 100%;
+      border-radius: 30px;
+      padding: 40px; 
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: #eee;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
     .modal-grid img { width: 100%; border-radius: 12px; }
 
     .highlight-box {
