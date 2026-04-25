@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copywriting | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #be3f56; /* Mantendo o padrão do seu portfólio */
+      --card-radius: 24px;
+    }
+
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+    
+    .back-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: 700; margin-bottom: 1.5rem; }
+    
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; margin: 0; line-height: 0.95; }
+    .desc { opacity: .7; max-width: 800px; margin-top: 1rem; line-height: 1.7; }
+
+    /* GRID DE CARDS */
+    .grid-copy {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .card:hover { transform: translateY(-5px); }
+    
+    .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-bottom: 1px solid #eee; }
+    
+    .card-info { padding: 1.5rem; }
+    .card-info h2 { margin: 0; font-size: 1.4rem; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px; 
+      width: 100%;
+      border-radius: 30px;
+      padding: 40px; 
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: #eee;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .modal-grid img { width: 100%; border-radius: 12px; }
+
+    .highlight-box {
+      background: #f9f6f2;
+      padding: 25px;
+      border-radius: 20px;
+      border-left: 5px solid var(--accent-color);
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <a class="back-link" href="index.html">← Voltar ao início</a>
+    <h1>Copywriting</h1>
+    <p class="desc">Textos estratégicos focados em conversão e construção de narrativa para marcas e profissionais.</p>
+
+    <div class="grid-copy">
+      <div class="card" onclick="openModal('modal-instagram')">
+        <img src="assets/capa-instagram.png">
+        <div class="card-info">
+          <h2>Instagram</h2>
+          <p style="font-size: 0.9rem; opacity: 0.7;">Sintonia Feminina & Social Media</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('modal-linkedin')">
+        <img src="assets/capa-linkedin.png">
+        <div class="card-info">
+          <h2>LinkedIn</h2>
+          <p style="font-size: 0.9rem; opacity: 0.7;">Personal Branding & Artigos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-instagram" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="close-btn" onclick="hideAllModals()">×</button>
+      
+      <h2 style="color: var(--accent-color);">Sintonia Feminina</h2>
+      
+      <div class="highlight-box">
+        <p style="margin-top:0;"><strong>Projeto Sintonia Feminina:</strong></p>
+        <p>Desenvolvimento de voz de marca para comunidade feminina. O trabalho consistiu em humanizar a comunicação através de storytelling, transformando dados técnicos em mensagens de acolhimento e empoderamento.</p>
+        <ul style="padding-left: 20px;">
+          <li>Roteiros estratégicos para Reels;</li>
+          <li>Legendas focadas em micro-conversão;</li>
+          <li>Narrativas para Stories de lançamento.</li>
+        </ul>
+      </div>
+
+      <h3>Visual do Projeto</h3>
+      <div class="modal-grid">
+        <img src="assets/sintonia-1.png">
+        <img src="assets/sintonia-2.png">
+        <img src="assets/sintonia-3.png">
+        <img src="assets/sintonia-4.png">
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-linkedin" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="close-btn" onclick="hideAllModals()">×</button>
+      <h2>LinkedIn</h2>
+      <p>Posicionamento de autoridade e escrita de artigos para profissionais do setor criativo.</p>
+      
+      <div class="highlight-box">
+        <p><strong>Destaque:</strong> Artigos de opinião com foco em Design Centrado no Usuário e o impacto do copywriting na jornada de compra.</p>
+      </div>
+
+      <div class="modal-grid">
+        <img src="assets/linkedin-1.png">
+        <img src="assets/linkedin-2.png">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function hideAllModals() {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
+      document.body.style.overflow = "auto";
+    }
+
+    function closeModal(e) {
+      if (e.target.classList.contains('modal-overlay')) hideAllModals();
+    }
+  </script>
+</body>
+</html>
