@@ -1,387 +1,469 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design | Portfólio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design | Portfólio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-color: #f2e8dc;
-      --text-color: #121212;
-      --accent-color: #be3f56;
-      --card-radius: 24px;
-      --card-width: 320px;
-      --gap: 30px;
-    }
+  <style>
+    :root {
+      --bg-color: #f2e8dc;
+      --text-color: #121212;
+      --accent-color: #be3f56;
+      --card-radius: 24px;
+      --card-width: 320px;
+      --gap: 30px;
+    }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      overflow-x: hidden;
-    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-    header {
-      padding-top: 4rem;
-    }
+    header {
+      padding-top: 4rem;
+    }
 
-    .back-link {
-      display: inline-block;
-      color: #2f6b5f; /* Cor original do seu link de voltar */
-      text-decoration: none;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
+    .back-link {
+      display: inline-block;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
 
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800;
-      margin: 0;
-      line-height: 0.95;
-    }
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin: 0;
+      line-height: 0.95;
+    }
 
-    /* CARROSSEL */
-    .slider-wrapper {
-      width: 100%;
-      padding: 60px 0;
-      overflow: hidden;
-      cursor: grab;
-      position: relative;
-    }
+    /* CARROSSEL */
+    .slider-wrapper {
+      width: 100%;
+      padding: 60px 0;
+      overflow: hidden;
+      cursor: grab;
+      position: relative;
+    }
 
-    .slider-wrapper:active {
-      cursor: grabbing;
-    }
+    .slider-wrapper:active {
+      cursor: grabbing;
+    }
 
-    .slider-track {
-      display: flex;
-      gap: var(--gap);
-      width: max-content;
-      animation: infiniteScroll 35s linear infinite;
-      will-change: transform;
-    }
+    .slider-track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content;
+      animation: infiniteScroll 35s linear infinite;
+      will-change: transform;
+    }
 
-    .slider-wrapper:hover .slider-track,
-    .slider-wrapper.is-dragging .slider-track {
-      animation-play-state: paused;
-    }
+    .slider-wrapper:hover .slider-track,
+    .slider-wrapper.is-dragging .slider-track {
+      animation-play-state: paused;
+    }
 
-    .featured-item {
-      flex: 0 0 var(--card-width);
-      height: 420px;
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      transform: rotate(2deg);
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      user-select: none;
-    }
+    .featured-item {
+      flex: 0 0 var(--card-width);
+      height: 420px;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transform: rotate(2deg);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      user-select: none;
+    }
 
-    .featured-item:hover {
-      transform: rotate(0deg) scale(1.05);
-      z-index: 5;
-    }
+    .featured-item:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 5;
+    }
 
-    .featured-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-    }
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
 
-    @keyframes infiniteScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-1 * (var(--card-width) + var(--gap)) * 6)); }
-    }
+    @keyframes infiniteScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-1 * (var(--card-width) + var(--gap)) * 6)); }
+    }
 
-    /* GRID MAIS TRABALHOS */
-    .more-work {
-      padding: 40px 0 80px 0;
-    }
+    /* GRID MAIS TRABALHOS */
+    .more-work {
+      padding: 40px 0 80px 0;
+    }
 
-    .grid-archive {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 50px;
-    }
+    .grid-archive {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
 
-    .archive-card {
-      background: white;
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      cursor: pointer;
-      transition: 0.3s;
-      height: 100%;
-    }
+    .archive-card {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+      height: 100%;
+    }
 
-    .archive-card:hover {
-      transform: translateY(-5px);
-    }
+    .archive-card:hover {
+      transform: translateY(-5px);
+    }
 
-    .archive-card img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
+    .archive-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
 
-    .archive-info {
-      padding: 1.5rem;
-    }
+    .archive-info {
+      padding: 1.5rem;
+    }
 
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 20px;
-    }
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
 
-    .modal-content {
-      background: white;
-      max-width: 700px; 
-      width: 100%;
-      border-radius: 30px;
-      padding: 30px; 
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
+    .modal-content {
+      background: white;
+      max-width: 700px; 
+      width: 100%;
+      border-radius: 30px;
+      padding: 30px; 
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
 
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      border: none;
-      background: #eee;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      z-index: 10;
-    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: #eee;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 10;
+    }
 
-    .modal-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 30px;
-    }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
 
-    .modal-grid img {
-      width: 100%;
-      border-radius: 10px;
-    }
-  </style>
+    .modal-grid img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
-  <header>
-    <a class="back-link" href="index.html">← Voltar ao início</a>
-    <h1>Design</h1>
-    <p style="opacity: .7; max-width: 800px; margin-top: 20px;">
-      Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.
-    </p>
-    <p style="opacity: .7; max-width: 750px;">
-      Fique à vontade para dar uma olhadinha em tudo! 
-    </p>
-  </header>
+  <header>
+    <a class="back-link" href="index.html">← Voltar ao início</a>
+    <h1>Design</h1>
+   <p style="opacity: .7; max-width: 800px;">
+  Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.
+</p>
+
+<p style="opacity: .7; max-width: 750px;">
+  Fique à vontade para dar uma olhadinha em tudo! 
+</p>
+    
+  </header>
 </div>
 
 <section class="slider-wrapper" id="sliderWrapper">
-  <div class="slider-track" id="sliderTrack">
-    <div class="featured-item"><img src="assets/SF.png"></div>
-    <div class="featured-item"><img src="assets/KALOR.png"></div>
-    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
-    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
-    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
-    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
-    <div class="featured-item"><img src="assets/SF.png"></div>
-    <div class="featured-item"><img src="assets/KALOR.png"></div>
-    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
-    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
-    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
-    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
-  </div>
+  <div class="slider-track" id="sliderTrack">
+    <div class="featured-item"><img src="assets/SF.png"></div>
+    <div class="featured-item"><img src="assets/KALOR.png"></div>
+    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
+    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
+    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
+    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
+    <div class="featured-item"><img src="assets/SF.png"></div>
+    <div class="featured-item"><img src="assets/KALOR.png"></div>
+    <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
+    <div class="featured-item"><img src="assets/CASAAWA.png"></div>
+    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
+    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
+  </div>
 </section>
 
 <section class="more-work">
-  <div class="container">
-    <h1 style="text-align:center;">Mais trabalhos</h1>
+  <div class="container">
+    <h1 style="text-align:center;">Mais trabalhos</h1>
 
-    <div class="grid-archive">
-      <div class="archive-card" onclick="openModal('lacca-modal')">
-        <img src="assets/LACCA.png">
-        <div class="archive-info"><h3>LACCA</h3></div>
-      </div>
+    <div class="grid-archive">
+      <div class="archive-card" onclick="openModal('lacca-modal')">
+        <img src="assets/LACCA.png">
+        <div class="archive-info"><h3>LACCA</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('innovare-modal')">
-        <img src="assets/innovare.png">
-        <div class="archive-info"><h3>INNOVARE</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('innovare-modal')">
+        <img src="assets/innovare.png">
+        <div class="archive-info"><h3>INNOVARE</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('innova-modal')">
-        <img src="assets/INOVA.png">
-        <div class="archive-info"><h3>CLÍNICA INNOVA</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('innova-modal')">
+        <img src="assets/INOVA.png">
+        <div class="archive-info"><h3>CLÍNICA INNOVA</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('projeto4-modal')">
-        <img src="assets/XICAFLOR.png">
-        <div class="archive-info"><h3>XICA FLOR</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('projeto4-modal')">
+        <img src="assets/XICAFLOR.png">
+        <div class="archive-info"><h3>XICA FLOR</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('projeto5-modal')">
-        <img src="assets/TRANSROTA.png">
-        <div class="archive-info"><h3>GRUPO TRANSROTA</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('projeto5-modal')">
+        <img src="assets/TRANSROTA.png">
+        <div class="archive-info"><h3>GRUPO TRANSROTA</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('projeto6-modal')">
-        <img src="assets/NATURALE.png">
-        <div class="archive-info"><h3>NATURALLE</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('projeto6-modal')">
+        <img src="assets/NATURALE.png">
+        <div class="archive-info"><h3>NATURALLE</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('projeto7-modal')">
-        <img src="assets/KALOR.png">
-        <div class="archive-info"><h3>KALOR FEST</h3></div>
-      </div>
+      <div class="archive-card" onclick="openModal('projeto7-modal')">
+        <img src="assets/KALOR.png">
+        <div class="archive-info"><h3>KALOR FEST</h3></div>
+      </div>
 
-      <div class="archive-card" onclick="openModal('projeto8-modal')">
-        <img src="assets/CAROLBORGES (1).png">
-        <div class="archive-info"><h3>CAROL BORGES</h3></div>
-      </div>
-    </div>
-  </div>
+      <div class="archive-card" onclick="openModal('projeto8-modal')">
+        <img src="assets/CAROLBORGES (1).png">
+        <div class="archive-info"><h3>CAROL BORGES</h3></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div id="lacca-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>LACCA</h2>
-    <p>Artes selecionadas feitas para o Laboratório Lacca</p>
-    <div class="modal-grid">
-      <img src="assets/lacca (1).png">
-      <img src="assets/lacca (2).png">
-      <img src="assets/lacca (3).png">
-      <img src="assets/lacca (4).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>LACCA</h2>
+    <p>Artes selecionadas feitas para o Laboratório Lacca</p>
+    <div class="modal-grid">
+      <img src="assets/lacca (1).png">
+      <img src="assets/lacca (2).png">
+      <img src="assets/lacca (3).png">
+      <img src="assets/lacca (4).png">
+      <img src="assets/lacca (5).png">
+      <img src="assets/lacca (6).png">
+      <img src="assets/lacca (7).png">
+      <img src="assets/lacca (8).png">
+      <img src="assets/lacca (9).png">
+      <img src="assets/lacca (10).png">
+      <img src="assets/lacca (11).png">
+      <img src="assets/lacca (12).png">
+      <img src="assets/lacca (13).png">
+      <img src="assets/lacca (14).png">
+      <img src="assets/lacca (15).png">
+      <img src="assets/lacca (16).png">
+      <img src="assets/lacca (17).png">
+      <img src="assets/lacca (18).png">
+      <img src="assets/lacca (19).png">
+    </div>
+  </div>
 </div>
 
 <div id="innovare-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>INNOVARE</h2>
-    <p>Artes selecionadas feitas para a academia Innovare</p>
-    <div class="modal-grid">
-      <img src="assets/innovare (1).png">
-      <img src="assets/innovare (2).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>INNOVARE</h2>
+    <p>Artes selecionadas feitas para a academia Innovare</p>
+    <div class="modal-grid">
+      <img src="assets/innovare (1).png">
+      <img src="assets/innovare (2).png">
+      <img src="assets/innovare (3).png">
+      <img src="assets/innovare (4).png">
+      <img src="assets/innovare (5).png">
+      <img src="assets/innovare (6).png">
+      <img src="assets/innovare (7).png">
+      <img src="assets/innovare (8).png">
+      <img src="assets/innovare (10).png">
+      <img src="assets/innovare (11).png">
+      <img src="assets/innovare (12).png">
+    </div>
+  </div>
 </div>
 
 <div id="innova-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>CLÍNICA INNOVA</h2>
-    <p>Artes selecionadas feitas para a Clínica Innova</p>
-    <div class="modal-grid">
-      <img src="assets/inova (1).jpg">
-      <img src="assets/inova (2).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>CLÍNICA INNOVA</h2>
+    <p>Artes selecionadas feitas para a Clínica Innova</p>
+    <div class="modal-grid">
+      <img src="assets/inova (1).jpg">
+      <img src="assets/inova (2).png">
+      <img src="assets/inova (3).jpg">
+      <img src="assets/inova (4).jpg">
+      <img src="assets/inova (5).jpg">
+      <img src="assets/inova (6).jpg">
+      <img src="assets/inova (7).png">
+      <img src="assets/inova (8).png">
+      <img src="assets/inova (9).png">
+      <img src="assets/inova (10).png">
+      <img src="assets/inova (11).png">
+      <img src="assets/inova (12).png">
+      <img src="assets/inova (13).png">
+      <img src="assets/inova (14).png">
+    </div>
+  </div>
 </div>
 
 <div id="projeto4-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>XICA FLOR</h2>
-    <p>Artes selecionadas feitas para a loja Xica Flor</p>
-    <div class="modal-grid">
-      <img src="assets/xicaflor (1).png">
-      <img src="assets/xicaflor (2).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>XICA FLOR</h2>
+    <p>Artes selecionadas feitas para a loja Xica Flor</p>
+    <div class="modal-grid">
+    <img src="assets/xicaflor (1).png">
+    <img src="assets/xicaflor (2).png">
+    <img src="assets/xicaflor (3).png">
+    <img src="assets/xicaflor (4).png">
+    <img src="assets/xicaflor (5).png">
+    <img src="assets/xicaflor (6).png">
+    <img src="assets/xicaflor (7).png">
+    <img src="assets/xicaflor (8).png">
+    <img src="assets/xicaflor (9).png">
+    <img src="assets/xicaflor (10).png">
+    <img src="assets/xicaflor (11).png">
+    <img src="assets/xicaflor (12).png">
+    <img src="assets/xicaflor (13).png">
+    
+    </div>
+  </div>
 </div>
 
 <div id="projeto5-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>GRUPO TRANSROTA</h2>
-    <p>Artes selecionadas feitas para o Grupo Transrota</p>
-    <div class="modal-grid">
-      <img src="assets/transrota (4).png">
-      <img src="assets/transrota (2).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>GRUPO TRANSROTA</h2>
+    <p>Artes selecionadas feitas para o Grupo Transrota</p>
+    <div class="modal-grid">
+    <img src="assets/transrota (4).png">
+    <img src="assets/transrota (2).png">
+    <img src="assets/transrota (6).png">
+    <img src="assets/transrota (8).jpg">
+    <img src="assets/transrota (1).png">
+    <img src="assets/transrota (3).png">
+    <img src="assets/transrota (5).png">
+    <img src="assets/transrota (7).jpg">
+      
+      </div>
+  </div>
 </div>
 
 <div id="projeto6-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>NATURALLE</h2>
-    <p>Imagens ilustrativas do projeto Naturalle.</p>
-    <div class="modal-grid">
-      <img src="assets/naturale1.png">
-      <img src="assets/naturale2.png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>NATURALLE</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid">
+    <img src="assets/naturale1.png">
+    <img src="assets/naturale2.png">
+    <img src="assets/naturale3.png">
+    <img src="assets/naturale4.png">
+    <img src="assets/naturale5.png">
+    <img src="assets/naturale6.png">
+    <img src="assets/naturale7.png">
+    <img src="assets/naturale8.png">
+    <img src="assets/naturale9.png">
+    <img src="assets/naturale10.png">
+    <img src="assets/naturale11.png">
+    <img src="assets/naturale12.png">
+    <img src="assets/naturale13.png">
+    <img src="assets/naturale14.png">
+      
+      </div>
+  </div>
 </div>
 
 <div id="projeto7-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>KALOR FEST</h2>
-    <p>Imagens ilustrativas do projeto Kalor Fest.</p>
-    <div class="modal-grid">
-      <img src="assets/kalor (1).png">
-      <img src="assets/kalor (2).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>KALOR FEST</h2>
+    <p>Imagens ilustrativas do projeto.</p>
+    <div class="modal-grid">
+      <img src="assets/kalor (1).png">
+      <img src="assets/kalor (2).png">
+      <img src="assets/kalor (3).png">
+      <img src="assets/kalor (5).png">
+      <img src="assets/kalor (6).png">
+      <img src="assets/kalor (8).png">
+      <img src="assets/kalor (9).png">
+      <img src="assets/kalor (10).png">
+      <img src="assets/kalor (11).png">
+      
+    </div>
+  </div>
 </div>
 
 <div id="projeto8-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>CAROL BORGES</h2>
-    <p>Identidade visual feita para Carol Borges Fotografia.</p>
-    <div class="modal-grid">
-      <img src="assets/carolborges(2).png">
-      <img src="assets/carolborges(3).png">
-    </div>
-  </div>
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>CAROL BORGES</h2>
+    <p>Identidade visual feita para Carol Borges Fotografia.</p>
+    <div class="modal-grid">
+      <img src="assets/carolborges(2).png">
+      <img src="assets/carolborges(3).png">
+      <img src="assets/CAROLBORGES (1).png">
+      <img src="assets/carolborges(1).png">
+
+      
+      </div>
+  </div>
 </div>
 
 <script>
 function openModal(id) {
-  document.getElementById(id).style.display = "flex";
-  document.body.style.overflow = "hidden"; 
+  document.getElementById(id).style.display = "flex";
+  document.body.style.overflow = "hidden"; 
 }
 
 function hideAllModals() {
-  document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
-  document.body.style.overflow = "auto";
+  document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none");
+  document.body.style.overflow = "auto";
 }
 
 function closeModal(e) {
-  if (e.target.classList.contains('modal-overlay')) hideAllModals();
+  if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
 // Lógica de arraste carrossel
@@ -392,35 +474,35 @@ let startX;
 let currentTranslate = 0;
 
 wrapper.addEventListener('mousedown', (e) => {
-  isDown = true;
-  wrapper.classList.add('is-dragging');
-  startX = e.pageX;
-  const style = window.getComputedStyle(track);
-  const matrix = new WebKitCSSMatrix(style.transform);
-  currentTranslate = matrix.m41;
-  track.style.animation = 'none';
-  track.style.transform = `translateX(${currentTranslate}px)`;
+  isDown = true;
+  wrapper.classList.add('is-dragging');
+  startX = e.pageX;
+  const style = window.getComputedStyle(track);
+  const matrix = new WebKitCSSMatrix(style.transform);
+  currentTranslate = matrix.m41;
+  track.style.animation = 'none';
+  track.style.transform = `translateX(${currentTranslate}px)`;
 });
 
 wrapper.addEventListener('mouseleave', () => {
-  if (!isDown) return;
-  isDown = false;
-  wrapper.classList.remove('is-dragging');
-  track.style.animation = 'infiniteScroll 35s linear infinite';
+  if (!isDown) return;
+  isDown = false;
+  wrapper.classList.remove('is-dragging');
+  track.style.animation = 'infiniteScroll 35s linear infinite';
 });
 
 wrapper.addEventListener('mouseup', () => {
-  isDown = false;
-  wrapper.classList.remove('is-dragging');
-  track.style.animation = 'infiniteScroll 35s linear infinite';
+  isDown = false;
+  wrapper.classList.remove('is-dragging');
+  track.style.animation = 'infiniteScroll 35s linear infinite';
 });
 
 wrapper.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX;
-  const walk = (x - startX);
-  track.style.transform = `translateX(${currentTranslate + walk}px)`;
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX;
+  const walk = (x - startX);
+  track.style.transform = `translateX(${currentTranslate + walk}px)`;
 });
 </script>
 
