@@ -51,7 +51,7 @@
       line-height: 0.95;
     }
 
-    /* CARROSSEL */
+    /* CARROSSEL INFINITO */
     .slider-wrapper {
       width: 100%;
       padding: 60px 0;
@@ -123,7 +123,6 @@
       overflow: hidden;
       cursor: pointer;
       transition: 0.3s;
-      height: 100%;
     }
 
     .archive-card:hover {
@@ -176,18 +175,6 @@
       font-size: 20px;
       z-index: 10;
     }
-
-    .modal-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .modal-grid img {
-      width: 100%;
-      border-radius: 10px;
-    }
   </style>
 </head>
 
@@ -197,14 +184,12 @@
   <header>
     <a class="back-link" href="index.html">← Voltar ao início</a>
     <h1>Design</h1>
-   <p style="opacity: .7; max-width: 800px;">
-  Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.
-</p>
-
-<p style="opacity: .7; max-width: 750px;">
-  Fique à vontade para dar uma olhadinha em tudo! 
-</p>
-    
+    <p style="opacity: .7; max-width: 800px; margin-top: 20px;">
+      Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.
+    </p>
+    <p style="opacity: .7; max-width: 750px;">
+      Fique à vontade para explorar meus projetos! :)
+    </p>
   </header>
 </div>
 
@@ -214,14 +199,14 @@
     <div class="featured-item"><img src="assets/KALOR.png"></div>
     <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
     <div class="featured-item"><img src="assets/CASAAWA.png"></div>
-    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
-    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
     <div class="featured-item"><img src="assets/SF.png"></div>
     <div class="featured-item"><img src="assets/KALOR.png"></div>
     <div class="featured-item"><img src="assets/GRANDESERTAOVEREDAS.jpg"></div>
     <div class="featured-item"><img src="assets/CASAAWA.png"></div>
-    <div class="featured-item"><img src="assets/BANNER CAE E BETH (1).png"></div>
-    <div class="featured-item"><img src="assets/CAROLBORGES (1).png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
+    <div class="featured-item"><img src="assets/LACCA.png"></div>
   </div>
 </section>
 
@@ -246,28 +231,24 @@
       </div>
 
       <div class="archive-card" onclick="openModal('projeto4-modal')">
-        <img src="assets/XICAFLOR.png">
-        <div class="archive-info"><h3>XICA FLOR</h3></div>
+        <img src="assets/capa4.png">
+        <div class="archive-info"><h3>PROJETO 04</h3></div>
       </div>
-
       <div class="archive-card" onclick="openModal('projeto5-modal')">
-        <img src="assets/TRANSROTA.png">
-        <div class="archive-info"><h3>GRUPO TRANSROTA</h3></div>
+        <img src="assets/capa5.png">
+        <div class="archive-info"><h3>PROJETO 05</h3></div>
       </div>
-
       <div class="archive-card" onclick="openModal('projeto6-modal')">
-        <img src="assets/NATURALE.png">
-        <div class="archive-info"><h3>NATURALLE</h3></div>
+        <img src="assets/capa6.png">
+        <div class="archive-info"><h3>PROJETO 06</h3></div>
       </div>
-
       <div class="archive-card" onclick="openModal('projeto7-modal')">
-        <img src="assets/KALOR.png">
-        <div class="archive-info"><h3>KALOR FEST</h3></div>
+        <img src="assets/capa7.png">
+        <div class="archive-info"><h3>PROJETO 07</h3></div>
       </div>
-
       <div class="archive-card" onclick="openModal('projeto8-modal')">
-        <img src="assets/CAROLBORGES (1).png">
-        <div class="archive-info"><h3>CAROL BORGES</h3></div>
+        <img src="assets/capa8.png">
+        <div class="archive-info"><h3>PROJETO 08</h3></div>
       </div>
     </div>
   </div>
@@ -277,28 +258,10 @@
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>LACCA</h2>
-    <p>Artes selecionadas feitas para o Laboratório Lacca</p>
-    <div class="modal-grid">
-      <img src="assets/lacca (1).png">
-      <img src="assets/lacca (2).png">
-      <img src="assets/lacca (3).png">
-      <img src="assets/lacca (4).png">
-      <img src="assets/lacca (5).png">
-      <img src="assets/lacca (6).png">
-      <img src="assets/lacca (7).png">
-      <img src="assets/lacca (8).png">
-      <img src="assets/lacca (9).png">
-      <img src="assets/lacca (10).png">
-      <img src="assets/lacca (11).png">
-      <img src="assets/lacca (12).png">
-      <img src="assets/lacca (13).png">
-      <img src="assets/lacca (14).png">
-      <img src="assets/lacca (15).png">
-      <img src="assets/lacca (16).png">
-      <img src="assets/lacca (17).png">
-      <img src="assets/lacca (18).png">
-      <img src="assets/lacca (19).png">
-    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
+      <img src="assets/lacca (1).png" style="width:100%;">
+      <img src="assets/lacca (2).png" style="width:100%;">
+      </div>
   </div>
 </div>
 
@@ -306,19 +269,9 @@
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>INNOVARE</h2>
-    <p>Artes selecionadas feitas para a academia Innovare</p>
-    <div class="modal-grid">
-      <img src="assets/innovare (1).png">
-      <img src="assets/innovare (2).png">
-      <img src="assets/innovare (3).png">
-      <img src="assets/innovare (4).png">
-      <img src="assets/innovare (5).png">
-      <img src="assets/innovare (6).png">
-      <img src="assets/innovare (7).png">
-      <img src="assets/innovare (8).png">
-      <img src="assets/innovare (10).png">
-      <img src="assets/innovare (11).png">
-      <img src="assets/innovare (12).png">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
+      <img src="assets/innovare (1).png" style="width:100%;">
+      <img src="assets/innovare (2).png" style="width:100%;">
     </div>
   </div>
 </div>
@@ -327,22 +280,11 @@
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>CLÍNICA INNOVA</h2>
-    <p>Artes selecionadas feitas para a Clínica Innova</p>
-    <div class="modal-grid">
-      <img src="assets/inova (1).jpg">
-      <img src="assets/inova (2).png">
-      <img src="assets/inova (3).jpg">
-      <img src="assets/inova (4).jpg">
-      <img src="assets/inova (5).jpg">
-      <img src="assets/inova (6).jpg">
-      <img src="assets/inova (7).png">
-      <img src="assets/inova (8).png">
-      <img src="assets/inova (9).png">
-      <img src="assets/inova (10).png">
-      <img src="assets/inova (11).png">
-      <img src="assets/inova (12).png">
-      <img src="assets/inova (13).png">
-      <img src="assets/inova (14).png">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:30px;">
+      <img src="assets/inova (1).png" style="width:100%;">
+      <img src="assets/inova (2).png" style="width:100%;">
+      <img src="assets/inova (3).png" style="width:100%;">
+      <img src="assets/inova (4).png" style="width:100%;">
     </div>
   </div>
 </div>
@@ -350,104 +292,56 @@
 <div id="projeto4-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>XICA FLOR</h2>
-    <p>Artes selecionadas feitas para a loja Xica Flor</p>
-    <div class="modal-grid">
-    <img src="assets/xicaflor (1).png">
-    <img src="assets/xicaflor (2).png">
-    <img src="assets/xicaflor (3).png">
-    <img src="assets/xicaflor (4).png">
-    <img src="assets/xicaflor (5).png">
-    <img src="assets/xicaflor (6).png">
-    <img src="assets/xicaflor (7).png">
-    <img src="assets/xicaflor (8).png">
-    <img src="assets/xicaflor (9).png">
-    <img src="assets/xicaflor (10).png">
-    <img src="assets/xicaflor (11).png">
-    <img src="assets/xicaflor (12).png">
-    <img src="assets/xicaflor (13).png">
-    
+    <h2>PROJETO 04</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <img src="assets/inova (1).png" style="width:100%;">
+      <img src="assets/inova (1).png" style="width:100%;">
+      <img src="assets/inova (1).png" style="width:100%;">
     </div>
   </div>
 </div>
-
+  
 <div id="projeto5-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>GRUPO TRANSROTA</h2>
-    <p>Artes selecionadas feitas para o Grupo Transrota</p>
-    <div class="modal-grid">
-    <img src="assets/transrota (4).png">
-    <img src="assets/transrota (2).png">
-    <img src="assets/transrota (6).png">
-    <img src="assets/transrota (8).jpg">
-    <img src="assets/transrota (1).png">
-    <img src="assets/transrota (3).png">
-    <img src="assets/transrota (5).png">
-    <img src="assets/transrota (7).jpg">
-      
-      </div>
-  </div>
-</div>
-
-<div id="projeto6-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>NATURALLE</h2>
-    <p>Imagens ilustrativas do projeto.</p>
-    <div class="modal-grid">
-    <img src="assets/naturale1.png">
-    <img src="assets/naturale2.png">
-    <img src="assets/naturale3.png">
-    <img src="assets/naturale4.png">
-    <img src="assets/naturale5.png">
-    <img src="assets/naturale6.png">
-    <img src="assets/naturale7.png">
-    <img src="assets/naturale8.png">
-    <img src="assets/naturale9.png">
-    <img src="assets/naturale10.png">
-    <img src="assets/naturale11.png">
-    <img src="assets/naturale12.png">
-    <img src="assets/naturale13.png">
-    <img src="assets/naturale14.png">
-      
-      </div>
-  </div>
-</div>
-
-<div id="projeto7-modal" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal-content">
-    <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>KALOR FEST</h2>
-    <p>Imagens ilustrativas do projeto.</p>
-    <div class="modal-grid">
-      <img src="assets/kalor (1).png">
-      <img src="assets/kalor (2).png">
-      <img src="assets/kalor (3).png">
-      <img src="assets/kalor (5).png">
-      <img src="assets/kalor (6).png">
-      <img src="assets/kalor (8).png">
-      <img src="assets/kalor (9).png">
-      <img src="assets/kalor (10).png">
-      <img src="assets/kalor (11).png">
-      
+    <h2>PROJETO 05</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <img src="assets/p5-1.png" style="width:100%;">
+      <img src="assets/p5-1.png" style="width:100%;">
+      <img src="assets/p5-1.png" style="width:100%;">
     </div>
   </div>
 </div>
-
+  
+<div id="projeto6-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>PROJETO 06</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <img src="assets/p6-1.png" style="width:100%;">
+       <img src="assets/p6-1.png" style="width:100%;">
+    </div>
+  </div>
+</div>
+  
+<div id="projeto7-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="hideAllModals()">×</button>
+    <h2>PROJETO 07</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <img src="assets/p7-1.png" style="width:100%;">
+      <img src="assets/p7-1.png" style="width:100%;">
+    </div>
+  </div>
+</div>
+  
 <div id="projeto8-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
-    <h2>CAROL BORGES</h2>
-    <p>Identidade visual feita para Carol Borges Fotografia.</p>
-    <div class="modal-grid">
-      <img src="assets/carolborges(2).png">
-      <img src="assets/carolborges(3).png">
-      <img src="assets/CAROLBORGES (1).png">
-      <img src="assets/carolborges(1).png">
-
-      
-      </div>
+    <h2>PROJETO 08</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <img src="assets/p8-1.png" style="width:100%;">
+    </div>
   </div>
 </div>
 
@@ -466,7 +360,6 @@ function closeModal(e) {
   if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
-// Lógica de arraste carrossel
 const wrapper = document.getElementById('sliderWrapper');
 const track = document.getElementById('sliderTrack');
 let isDown = false;
