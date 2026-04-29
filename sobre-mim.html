@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* ===== ADICIONADO (SEM MEXER NO RESTO) ===== */
+    /* ===== CSS EXISTENTE MANTIDO ===== */
 
     .about__card {
       display: flex;
@@ -50,9 +50,48 @@
       transition: 0.3s;
     }
 
-    /* ⭐ efeito ao passar o mouse */
     .skill:hover .stars {
       color: #f4c10a;
+    }
+
+    /* ===== NOVOS ESTILOS PARA FERRAMENTAS E CAPACITAÇÕES ===== */
+
+    .extra-info {
+      margin-top: 40px;
+    }
+
+    .extra-info h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .tool-tag {
+      background: #f0f0f0;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .certifications-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cert-item {
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      border-left: 2px solid #ddd;
+      padding-left: 10px;
     }
 
     /* RESPONSIVO */
@@ -63,6 +102,7 @@
 
       .skills {
         margin-top: 40px;
+        width: 100%;
       }
     }
   </style>
@@ -77,7 +117,7 @@
       <div class="about__content">
         <p class="about__eyebrow">Sobre mim</p>
         <h2>oie, que bom te ter aqui!</h2>
-    
+        
 
         <p>
           Sou estudante de Jornalismo na Universidade Federal da Paraíba e, há três anos, venho construindo minha experiência entre o marketing,
@@ -99,7 +139,6 @@
         </p>
       </div>
 
-      <!-- ⭐ NOVA PARTE (HABILIDADES) -->
       <div class="skills">
         <h2>Minhas habilidades</h2>
 
@@ -114,18 +153,32 @@
         </div>
 
         <div class="skill">
-          <span>Audiovisual</span>
-          <div class="stars">★★★★☆</div>
-        </div>
-
-        <div class="skill">
           <span>Social Media</span>
           <div class="stars">★★★★☆</div>
         </div>
 
-        <div class="skill">
-          <span>Fotografia</span>
-          <div class="stars">★★★☆☆</div>
+        <div class="extra-info">
+          <h3>Ferramentas</h3>
+          <div class="tools-list">
+            <span class="tool-tag">Adobe Photoshop</span>
+            <span class="tool-tag">Premiere Pro</span>
+            <span class="tool-tag">Canva</span>
+            <span class="tool-tag">CapCut</span>
+            <span class="tool-tag">Pacote Office</span>
+          </div>
+
+          <h3>Capacitações</h3>
+          <ul class="certifications-list">
+            <li class="cert-item">
+              <strong>Curso de Marketing Digital</strong> - Instituição X (2023)
+            </li>
+            <li class="cert-item">
+              <strong>Oficina de Roteiro Audiovisual</strong> - Evento Y (2022)
+            </li>
+            <li class="cert-item">
+              <strong>Design para Redes Sociais</strong> - Curso Z (2023)
+            </li>
+          </ul>
         </div>
       </div>
 
