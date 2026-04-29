@@ -15,7 +15,6 @@
 
   <style>
     /* ===== CSS EXISTENTE MANTIDO ===== */
-
     .about__card {
       display: flex;
       gap: 60px;
@@ -54,8 +53,7 @@
       color: #f4c10a;
     }
 
-    /* ===== NOVOS ESTILOS PARA FERRAMENTAS E CAPACITAÇÕES ===== */
-
+    /* ===== AJUSTES NAS FERRAMENTAS (BOTÕES AMARELOS) ===== */
     .extra-info {
       margin-top: 40px;
     }
@@ -74,11 +72,13 @@
     }
 
     .tool-tag {
-      background: #f0f0f0;
-      padding: 5px 12px;
+      background: #f4c10a; /* Amarelo das estrelas */
+      color: #000;         /* Preto para alto contraste */
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;    /* Um pouco mais de peso para ler melhor */
+      display: inline-block;
     }
 
     .certifications-list {
@@ -88,10 +88,10 @@
 
     .cert-item {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.4;
-      border-left: 2px solid #ddd;
-      padding-left: 10px;
+      border-left: 3px solid #f4c10a; /* Detalhe em amarelo também */
+      padding-left: 12px;
     }
 
     /* RESPONSIVO */
@@ -99,7 +99,6 @@
       .about__card {
         flex-direction: column;
       }
-
       .skills {
         margin-top: 40px;
         width: 100%;
@@ -118,7 +117,6 @@
         <p class="about__eyebrow">Sobre mim</p>
         <h2>oie, que bom te ter aqui!</h2>
         
-
         <p>
           Sou estudante de Jornalismo na Universidade Federal da Paraíba e, há três anos, venho construindo minha experiência entre o marketing,
           o design gráfico, a redação e o audiovisual.
@@ -170,13 +168,13 @@
           <h3>Capacitações</h3>
           <ul class="certifications-list">
             <li class="cert-item">
-              <strong>Curso de Marketing Digital</strong> - Instituição X (2023)
+              <strong>Curso de Marketing Digital</strong><br>Instituição X
             </li>
             <li class="cert-item">
-              <strong>Oficina de Roteiro Audiovisual</strong> - Evento Y (2022)
+              <strong>Oficina de Roteiro Audiovisual</strong><br>Evento Y
             </li>
             <li class="cert-item">
-              <strong>Design para Redes Sociais</strong> - Curso Z (2023)
+              <strong>Design para Redes Sociais</strong><br>Curso Z
             </li>
           </ul>
         </div>
