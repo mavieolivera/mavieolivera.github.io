@@ -51,7 +51,7 @@
       line-height: 0.95;
     }
 
-    /* CARROSSEL */
+    /* CARROSSEL INFINITO */
     .slider-wrapper {
       width: 100%;
       padding: 60px 0;
@@ -105,16 +105,46 @@
       to { transform: translateX(calc(-1 * (var(--card-width) + var(--gap)) * 6)); }
     }
 
-    /* GRID MAIS TRABALHOS */
+    /* FILTROS E MAIS TRABALHOS */
     .more-work {
       padding: 40px 0 80px 0;
+    }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 25px auto 40px;
+    }
+
+    .tag-button {
+      border: 1px solid rgba(190, 63, 86, 0.2);
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--text-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tag-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-color);
+    }
+
+    .tag-button.is-active {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
     }
 
     .grid-archive {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 25px;
-      margin-top: 50px;
     }
 
     .archive-card {
@@ -124,6 +154,10 @@
       cursor: pointer;
       transition: 0.3s;
       height: 100%;
+    }
+
+    .archive-card.is-hidden {
+      display: none;
     }
 
     .archive-card:hover {
@@ -197,14 +231,8 @@
   <header>
     <a class="back-link" href="index.html">← Voltar ao início</a>
     <h1>Design</h1>
-   <p style="opacity: .7; max-width: 800px;">
-  Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.
-</p>
-
-<p style="opacity: .7; max-width: 750px;">
-  Fique à vontade para dar uma olhadinha em tudo! 
-</p>
-    
+    <p style="opacity: .7; max-width: 800px;">Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.</p>
+    <p style="opacity: .7; max-width: 750px;">Fique à vontade para dar uma olhadinha em tudo!</p>
   </header>
 </div>
 
@@ -229,72 +257,81 @@
   <div class="container">
     <h1 style="text-align:center;">Mais trabalhos</h1>
 
+    <div class="filter-container">
+        <button class="tag-button is-active" onclick="filterSelection('todos', this)">Todos</button>
+        <button class="tag-button" onclick="filterSelection('saude', this)">Saúde</button>
+        <button class="tag-button" onclick="filterSelection('eventos', this)">Eventos</button>
+        <button class="tag-button" onclick="filterSelection('juridico', this)">Jurídico</button>
+        <button class="tag-button" onclick="filterSelection('varejo', this)">Moda/Varejo</button>
+        <button class="tag-button" onclick="filterSelection('identidade', this)">Identidade Visual</button>
+        <button class="tag-button" onclick="filterSelection('autoral', this)">Autoral</button>
+    </div>
+
     <div class="grid-archive">
-      <div class="archive-card" onclick="openModal('lacca-modal')">
+      <div class="archive-card" data-category="saude" onclick="openModal('lacca-modal')">
         <img src="assets/LACCA.png">
         <div class="archive-info"><h3>LACCA</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('innovare-modal')">
+      <div class="archive-card" data-category="eventos" onclick="openModal('innovare-modal')">
         <img src="assets/innovare.png">
         <div class="archive-info"><h3>INNOVARE</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('innova-modal')">
+      <div class="archive-card" data-category="saude" onclick="openModal('innova-modal')">
         <img src="assets/INOVA.png">
         <div class="archive-info"><h3>CLÍNICA INNOVA</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto4-modal')">
+      <div class="archive-card" data-category="varejo" onclick="openModal('projeto4-modal')">
         <img src="assets/XICAFLOR.png">
         <div class="archive-info"><h3>XICA FLOR</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto5-modal')">
+      <div class="archive-card" data-category="varejo" onclick="openModal('projeto5-modal')">
         <img src="assets/TRANSROTA.png">
         <div class="archive-info"><h3>GRUPO TRANSROTA</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto6-modal')">
+      <div class="archive-card" data-category="varejo" onclick="openModal('projeto6-modal')">
         <img src="assets/NATURALE.png">
         <div class="archive-info"><h3>NATURALLE</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto7-modal')">
+      <div class="archive-card" data-category="eventos" onclick="openModal('projeto7-modal')">
         <img src="assets/KALOR.png">
         <div class="archive-info"><h3>KALOR FEST</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto8-modal')">
+      <div class="archive-card" data-category="identidade" onclick="openModal('projeto8-modal')">
         <img src="assets/CAROLBORGES (1).png">
         <div class="archive-info"><h3>CAROL BORGES</h3></div>
       </div>
 
-       <div class="archive-card" onclick="openModal('projeto9-modal')">
+      <div class="archive-card" data-category="saude" onclick="openModal('projeto9-modal')">
         <img src="assets/ORTOETRAUMA.png">
         <div class="archive-info"><h3>ORTO&TRAUMA</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto10-modal')">
+      <div class="archive-card" data-category="identidade" onclick="openModal('projeto10-modal')">
         <img src="assets/CSAAAWA.png">
         <div class="archive-info"><h3>CASA AWÁ</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto11-modal')">
+      <div class="archive-card" data-category="identidade" onclick="openModal('projeto11-modal')">
         <img src="assets/SF.png">
         <div class="archive-info"><h3>SINTONIA FEMININA</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto12-modal')">
+      <div class="archive-card" data-category="autoral" onclick="openModal('projeto12-modal')">
         <img src="assets/GRANDESERTAOVEREDAS.jpg">
         <div class="archive-info"><h3>CAPA GRANDE SERTÃO VEREDAS</h3></div>
       </div>
 
-      <div class="archive-card" onclick="openModal('projeto13-modal')">
+      <div class="archive-card" data-category="juridico" onclick="openModal('projeto13-modal')">
         <img src="assets/BEW.png">
         <div class="archive-info"><h3>BEZERRA & WANDERLEY</h3></div>
       </div>
-      
     </div>
   </div>
 </section>
@@ -392,7 +429,6 @@
     <img src="assets/xicaflor (11).png">
     <img src="assets/xicaflor (12).png">
     <img src="assets/xicaflor (13).png">
-    
     </div>
   </div>
 </div>
@@ -411,8 +447,7 @@
     <img src="assets/transrota (3).png">
     <img src="assets/transrota (5).png">
     <img src="assets/transrota (7).jpg">
-      
-      </div>
+    </div>
   </div>
 </div>
 
@@ -436,8 +471,7 @@
     <img src="assets/naturale12.png">
     <img src="assets/naturale13.png">
     <img src="assets/naturale14.png">
-      
-      </div>
+    </div>
   </div>
 </div>
 
@@ -456,7 +490,6 @@
       <img src="assets/kalor (9).png">
       <img src="assets/kalor (10).png">
       <img src="assets/kalor (11).png">
-      
     </div>
   </div>
 </div>
@@ -471,11 +504,9 @@
       <img src="assets/carolborges(3).png">
       <img src="assets/CAROLBORGES (1).png">
       <img src="assets/carolborges(1).png">
-      
     </div>
   </div>
 </div>
- 
 
 <div id="projeto9-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
@@ -494,7 +525,6 @@
       <img src="assets/ortoetrauma (9).jpg">
       <img src="assets/ortoetrauma (10).jpg">
       <img src="assets/ortoetrauma (11).jpg">
-      
     </div>
   </div>
 </div>
@@ -513,7 +543,6 @@
       <img src="assets/casaawa (6).png">
       <img src="assets/casaawa (7).png">
       <img src="assets/casaawa (8).png">
-
     </div>
   </div>
 </div>
@@ -528,7 +557,6 @@
       <img src="assets/sintonia.png">
       <img src="assets/SFEP1KALYNEa.png">
       <img src="assets/SF.png">
-
     </div>
   </div>
 </div>
@@ -542,13 +570,11 @@
       <img src="assets/grandesertao (1).png">
       <img src="assets/grandesertao (3).png">
       <img src="assets/GRANDESERTAOVEREDAS.jpg">
-    
-  
     </div>
   </div>
 </div>
 
-  <div id="projeto13-modal" class="modal-overlay" onclick="closeModal(event)">
+<div id="projeto13-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
     <h2>BEZERRA & WANDERLEY</h2>
@@ -565,13 +591,29 @@
       <img src="assets/bew (9).jpg">
       <img src="assets/bew (10).jpg">
       <img src="assets/bew (11).jpg">
-
-      
-      </div>
+    </div>
   </div>
 </div>
 
 <script>
+// FILTRAGEM
+function filterSelection(category, btn) {
+    // Botão Ativo
+    document.querySelectorAll('.tag-button').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
+    // Lógica dos Cards
+    const cards = document.querySelectorAll('.archive-card');
+    cards.forEach(card => {
+        if (category === 'todos' || card.getAttribute('data-category') === category) {
+            card.classList.remove('is-hidden');
+        } else {
+            card.classList.add('is-hidden');
+        }
+    });
+}
+
+// MODAL
 function openModal(id) {
   document.getElementById(id).style.display = "flex";
   document.body.style.overflow = "hidden"; 
@@ -586,7 +628,7 @@ function closeModal(e) {
   if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
-// Lógica de arraste carrossel
+// CARROSSEL (Inalterado)
 const wrapper = document.getElementById('sliderWrapper');
 const track = document.getElementById('sliderTrack');
 let isDown = false;
