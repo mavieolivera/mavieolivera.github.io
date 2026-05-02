@@ -28,6 +28,7 @@
 
     p {
       color: rgba(18,18,18,.7);
+      margin-bottom: 3rem;
     }
 
     .back {
@@ -45,31 +46,38 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .card {
       background: #ffffff;
       border-radius: 20px;
-      padding: 1rem;
+      overflow: hidden; /* Garante que o vídeo respeite o arredondamento do card */
       box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      padding-bottom: 1.5rem; /* Espaçamento apenas na parte de baixo para o texto */
     }
 
     .card h3 {
-      margin: 1rem 0 0.3rem;
+      margin: 1.2rem 1rem 0.3rem;
       font-size: 1rem;
     }
 
     .card span {
       font-size: 0.8rem;
       color: #666;
+      margin-left: 1rem;
+      display: block;
     }
 
+    /* Ajustes para remover bordas brancas do embed */
     .instagram-media {
       max-width: 100% !important;
       width: 100% !important;
+      min-width: 100% !important;
       margin: 0 !important;
-      border-radius: 16px !important;
+      border: none !important;
+      border-radius: 0 !important; /* O arredondamento vem do .card */
+      box-shadow: none !important;
     }
 
   </style>
@@ -104,6 +112,18 @@
       </div>
 
       <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DCRbQ3KpW2V/"></blockquote>
+        <h3>Projeto Especial</h3>
+        <span>Edição Criativa</span>
+      </div>
+
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXiT65kjFOP/"></blockquote>
+        <h3>Vídeo Portfolio</h3>
+        <span>Motion e Ritmo</span>
+      </div>
+
+      <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAGikULpxhU/"></blockquote>
         <h3>Série de Anúncios</h3>
         <span>Estratégia digital</span>
@@ -134,4 +154,4 @@
   <script async src="//www.instagram.com/embed.js"></script>
 
 </body>
-</html> 
+</html>
