@@ -263,6 +263,8 @@
         <button class="tag-button" onclick="filterSelection('eventos', this)">Eventos</button>
         <button class="tag-button" onclick="filterSelection('juridico', this)">Jurídico</button>
         <button class="tag-button" onclick="filterSelection('varejo', this)">Moda/Beleza</button>
+        <button class="tag-button" onclick="filterSelection('empresarial', this)">Empresarial</button>
+        <button class="tag-button" onclick="filterSelection('logistica', this)">Logística</button>
         <button class="tag-button" onclick="filterSelection('identidade', this)">Identidade Visual</button>
         <button class="tag-button" onclick="filterSelection('autoral', this)">Autoral</button>
     </div>
@@ -288,12 +290,12 @@
         <div class="archive-info"><h3>XICA FLOR</h3></div>
       </div>
 
-      <div class="archive-card" data-category="varejo" onclick="openModal('projeto5-modal')">
+      <div class="archive-card" data-category="logistica" onclick="openModal('projeto5-modal')">
         <img src="assets/TRANSROTA.png">
         <div class="archive-info"><h3>GRUPO TRANSROTA</h3></div>
       </div>
 
-      <div class="archive-card" data-category="varejo" onclick="openModal('projeto6-modal')">
+      <div class="archive-card" data-category="empresarial" onclick="openModal('projeto6-modal')">
         <img src="assets/NATURALE.png">
         <div class="archive-info"><h3>NATURALLE</h3></div>
       </div>
@@ -380,7 +382,7 @@
       <img src="assets/innovare (7).png">
       <img src="assets/innovare (8).png">
       <img src="assets/innovare (10).png">
-      <img src="assets/innovare (11).png">
+      ><img src="assets/innovare (11).png">
       <img src="assets/innovare (12).png">
     </div>
   </div>
@@ -598,11 +600,9 @@
 <script>
 // FILTRAGEM
 function filterSelection(category, btn) {
-    // Botão Ativo
     document.querySelectorAll('.tag-button').forEach(b => b.classList.remove('is-active'));
     btn.classList.add('is-active');
 
-    // Lógica dos Cards
     const cards = document.querySelectorAll('.archive-card');
     cards.forEach(card => {
         if (category === 'todos' || card.getAttribute('data-category') === category) {
@@ -628,7 +628,7 @@ function closeModal(e) {
   if (e.target.classList.contains('modal-overlay')) hideAllModals();
 }
 
-// CARROSSEL (Inalterado)
+// CARROSSEL
 const wrapper = document.getElementById('sliderWrapper');
 const track = document.getElementById('sliderTrack');
 let isDown = false;
