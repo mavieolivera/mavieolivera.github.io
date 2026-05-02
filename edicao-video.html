@@ -45,115 +45,8 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden; /* Garante que o vídeo respeite o arredondamento do card */
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      padding-bottom: 1.5rem; /* Espaçamento apenas na parte de baixo para o texto */
-    }
-
-    .card h3 {
-      margin: 1.2rem 1rem 0.3rem;
-      font-size: 1rem;
-    }
-
-    .card span {
-      font-size: 0.8rem;
-      color: #666;
-      margin-left: 1rem;
-      display: block;
-    }
-
-    /* Ajustes para remover bordas brancas do embed */
-    .instagram-media {
-      max-width: 100% !important;
-      width: 100% !important;
-      min-width: 100% !important;
-      margin: 0 !important;
-      border: none !important;
-      border-radius: 0 !important; /* O arredondamento vem do .card */
-      box-shadow: none !important;
-    }
-
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-
-    <a class="back" href="index.html">← Voltar ao início</a>
-
-    <h1>Edição de Vídeo</h1>
-    <p>Projetos audiovisuais com foco em narrativa, ritmo e estratégia digital.</p>
-
-    <div class="grid">
-
-      <div class="card">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C5mU6lordUp/"></blockquote>
-        <h3>Sintonia Feminina — Vídeo Institucional</h3>
-        <span>Roteiro e edição</span>
-      </div>
-
-      <div class="card">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C6ujEg2O9--/"></blockquote>
-        <h3>Sintonia Feminina — Conteúdo Promocional</h3>
-        <span>Social media</span>
-      </div>
-
-      <div class="card">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://ww<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Edição de Vídeo | Portfólio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f2e8dc;
-      color: #121212;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: .5rem;
-    }
-
-    p {
-      color: rgba(18,18,18,.7);
-      margin-bottom: 3rem;
-    }
-
-    .back {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: #315edb; 
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .back:hover {
-      text-decoration: underline;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      /* Ajuste para garantir colunas consistentes */
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
     }
 
@@ -163,11 +56,9 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,.06);
       padding-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* Remove bordas brancas e força o preenchimento total */
+    /* Remove as bordas brancas do embed */
     .instagram-media {
       margin: 0 !important;
       padding: 0 !important;
@@ -192,6 +83,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: 600;
+      display: block;
     }
 
   </style>
@@ -215,7 +107,7 @@
 
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAGikULpxhU/"></blockquote>
-        <h3>Sintonia Feminina Podcast — Campanha de Estreia</h3>
+        <h3>Sintonia Feminina Podcast — Identidade Sonora</h3>
         <span>Promo e estratégia visual</span>
       </div>
 
@@ -226,39 +118,39 @@
       </div>
 
       <div class="card">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C5mU6lordUp/"></blockquote>
-        <h3>Sintonia Feminina — Manifesto Institucional</h3>
-        <span>Roteiro e montagem</span>
-      </div>
-
-      <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DCRbQ3KpW2V/"></blockquote>
-        <h3>Dynamic Reels — High Energy Edit</h3>
-        <span>Edição de alto impacto</span>
+        <h3>Projeto de Edição Criativa</h3>
+        <span>Montagem e Motion</span>
       </div>
 
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXiT65kjFOP/"></blockquote>
-        <h3>Lifestyle & Storytelling</h3>
-        <span>Color grading e ritmo</span>
+        <h3>Storytelling Visual</h3>
+        <span>Ritmo e Narrativa</span>
+      </div>
+
+      <div class="card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C5mU6lordUp/"></blockquote>
+        <h3>Sintonia Feminina — Vídeo Institucional</h3>
+        <span>Roteiro e montagem</span>
       </div>
 
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVYN40CDJwp/"></blockquote>
-        <h3>Bom Dia Paraíba — Teaser Papo Jovem</h3>
-        <span>Chamada de TV (Rede Paraíba)</span>
+        <h3>Bom Dia Paraíba — Papo Jovem</h3>
+        <span>Chamada televisiva</span>
       </div>
 
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTniM89gEG_/"></blockquote>
-        <h3>Verão JPB1 — Cobertura Especial</h3>
-        <span>Edição ágil e trend-timing</span>
+        <h3>JPB1 de Verão — Especial</h3>
+        <span>Trend-timing e edição ágil</span>
       </div>
 
       <div class="card">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C6ujEg2O9--/"></blockquote>
-        <h3>Social Content — Sintonia Feminina</h3>
-        <span>Motion Graphics e Design</span>
+        <h3>Sintonia Feminina — Promo Content</h3>
+        <span>Social media</span>
       </div>
 
     </div>
