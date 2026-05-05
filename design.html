@@ -6,7 +6,7 @@
   <title>Design | Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -49,6 +49,15 @@
       font-weight: 800;
       margin: 0;
       line-height: 0.95;
+    }
+
+    /* ESTILO PARA A FRASE MANUSCRITA */
+    .intro-handwritten {
+      font-family: 'Indie Flower', cursive;
+      color: #666;
+      font-size: 24px;
+      margin-top: 10px;
+      opacity: 1 !important; /* Para garantir que o cinza apareça bem */
     }
 
     /* CARROSSEL INFINITO */
@@ -231,8 +240,8 @@
   <header>
     <a class="back-link" href="index.html">← Voltar ao início</a>
     <h1>Design</h1>
-    <p style="opacity: .7; max-width: 800px;">Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.</p>
-    <p style="opacity: .7; max-width: 750px;">Fique à vontade para dar uma olhadinha em tudo!</p>
+    <p style="opacity: .7; max-width: 800px; margin-bottom: 5px;">Aqui está um compilado de tudo que desenvolvi ao longo de três anos trabalhando como designer.</p>
+    <p class="intro-handwritten">Fique à vontade para dar uma olhadinha em tudo!</p>
   </header>
 </div>
 
@@ -382,7 +391,7 @@
       <img src="assets/innovare (7).png">
       <img src="assets/innovare (8).png">
       <img src="assets/innovare (10).png">
-      ><img src="assets/innovare (11).png">
+      <img src="assets/innovare (11).png">
       <img src="assets/innovare (12).png">
     </div>
   </div>
@@ -530,7 +539,7 @@
     </div>
   </div>
 </div>
-      
+
 <div id="projeto10-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="close-btn" onclick="hideAllModals()">×</button>
