@@ -54,10 +54,13 @@
       font-weight: 800;
     }
 
+    /* AQUI ESTÁ A ALTERAÇÃO QUE VOCÊ PEDIU */
     .portfolio__intro p {
       max-width: 600px;
       margin-bottom: 60px;
-      color: #333;
+      color: #666; /* Cor cinza */
+      font-family: 'Indie Flower', cursive; /* Mesma fonte do subtítulo */
+      font-size: 24px; /* Tamanho ajustado para melhor leitura */
     }
 
     .area {
@@ -159,6 +162,11 @@
       .hero__button {
         width: fit-content;
       }
+
+      /* Ajuste responsivo para o parágrafo customizado */
+      .portfolio__intro p {
+        font-size: 20px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -172,10 +180,6 @@
 
       .portfolio__intro h2 {
         font-size: 28px;
-      }
-
-      .portfolio__intro p {
-        font-size: 14px;
       }
 
       .area {
